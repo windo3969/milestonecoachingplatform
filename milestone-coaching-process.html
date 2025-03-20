@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마일스톤 - 코칭 과정 살펴보기</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4468ff;
+            --primary-dark: #3450d9;
+            --primary-light: #5d8ef3;
+            --dark: #1a1a1a;
+            --gray-dark: #333;
+            --gray: #666;
+            --gray-light: #aaa;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: #333;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        
+        .bg-primary {
+            background-color: var(--primary) !important;
+        }
+        
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+        }
+        
+        .text-primary {
+            color: var(--primary) !important;
+        }
+        
+        /* Custom Components */
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            padding: 120px 0 80px;
+            position: relative;
+        }
+        
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+        }
+        
+        /* Process Timeline */
+        .process-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--primary-light);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            background: white;
+            border: 4px solid var(--primary);
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            margin-top: 0;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .timeline-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        /* Process Cards */
+        .process-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: none;
+        }
+        
+        .process-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .process-img {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .process-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .process-card:hover .process-img img {
+            transform: scale(1.05);
+        }
+        
+        .process-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(68, 104, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* FAQ Accordion */
+        .accordion-item {
+            border: none;
+            margin-bottom: 1rem;
+        }
+        
+        .accordion-button {
+            background-color: white;
+            border-radius: 10px !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            font-weight: 500;
+            padding: 1.25rem;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            color: var(--primary);
+            background-color: rgba(68, 104, 255, 0.05);
+        }
+        
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: rgba(68, 104, 255, 0.1);
+        }
+        
+        .accordion-button::after {
+            background-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .accordion-body {
+            padding: 1.25rem;
+            background-color: white;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            background-color: rgba(68, 104, 255, 0.05);
+            border-radius: 10px;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        /* Step Cards */
+        .step-card {
+            position: relative;
+            padding: 2rem;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        /* Testimonial */
+        .testimonial {
+            border-radius: 10px;
+            background-color: white;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            font-family: Georgia, serif;
+            color: var(--primary-light);
+            opacity: 0.2;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        
+        .testimonial-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .testimonial-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-info h5 {
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .testimonial-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Photo Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Video */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin: 3rem 0;
+        }
+        
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+        }
+        
+        /* Responsive */
+        @media (max-width: 991px) {
+            .process-timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+                top: 15px;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+            <div class="container">
+                <a class="navbar-brand text-primary" href="#">마일스톤</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">홈</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">서비스 소개</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">코칭 과정</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">코치 소개</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">성공 스토리</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">요금 안내</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <button class="btn btn-outline-primary me-2">로그인</button>
+                        <button class="btn btn-primary">회원가입</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 페이지 헤더 -->
+    <section class="page-header text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-4">코칭 과정 살펴보기</h1>
+                    <p class="lead mb-0">마일스톤의 코칭이 어떻게 진행되는지 알려드립니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 코칭 과정 소개 -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="fw-bold mb-4">마일스톤 코칭은<br>어떻게 진행될까요?</h2>
+                    <p class="lead mb-4">마일스톤의 코칭은 체계적인 프로세스를 따라 진행됩니다. 목표 설정부터 지속적인 성장 관리까지, 전문 코치와 함께하는 변화의 여정을 소개합니다.</p>
+                    <p class="mb-4">모든 코칭 과정은 클라이언트의 목표와 상황에 맞게 맞춤화되며, 투명하고 체계적인 방식으로 진행됩니다. 전문 코치와의 신뢰 관계를 바탕으로 실질적인 변화와 성장을 경험하실 수 있습니다.</p>
+                    <div class="d-flex">
+                        <div class="me-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                <span class="fw-semibold">맞춤형 코칭 설계</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                <span class="fw-semibold">체계적인 목표 설정</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                <span class="fw-semibold">명확한 실행 계획</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                <span class="fw-semibold">지속적인 성장 관리</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="/api/placeholder/600/400" alt="코칭 세션" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 코칭 단계 개요 -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-4">코칭 단계 개요</h2>
+                <p class="lead mx-auto" style="max-width: 800px;">마일스톤의 코칭은 크게 5단계로 진행됩니다. 각 단계는 클라이언트의 성장을 위해 체계적으로 설계되었습니다.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="process-icon mx-auto">
+                            <i class="bi bi-search"></i>
+                        </div>
+                        <h3 class="h4 text-center mb-3">탐색 및 관계 형성</h3>
+                        <p class="text-muted mb-0">코치와 클라이언트의 첫 만남이 이루어지는 단계입니다. 코칭의 목적과 기대를 명확히 하고 서로에 대한 이해를 바탕으로 신뢰 관계를 형성합니다.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="process-icon mx-auto">
+                            <i class="bi bi-bullseye"></i>
+                        </div>
+                        <h3 class="h4 text-center mb-3">목표 설정</h3>
+                        <p class="text-muted mb-0">클라이언트의 현재 상황을 분석하고, 명확하고 측정 가능한 목표를 설정합니다. SMART 기법을 활용하여 구체적이고 실현 가능한 목표를 정립합니다.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="process-icon mx-auto">
+                            <i class="bi bi-map"></i>
+                        </div>
+                        <h3 class="h4 text-center mb-3">실행 계획 수립</h3>
+                        <p class="text-muted mb-0">목표 달성을 위한 구체적인 실행 계획을 수립합니다. 장애물을 예측하고 극복 전략을 마련하며, 실질적인 액션 플랜을 작성합니다.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="process-icon mx-auto">
+                            <i class="bi bi-lightning-charge"></i>
+                        </div>
+                        <h3 class="h4 text-center mb-3">실행 및 피드백</h3>
+                        <p class="text-muted mb-0">계획을 실행에 옮기고 정기적인 코칭 세션에서 진행 상황을 점검합니다. 실행 과정에서의 어려움을 함께 해결하고, 필요한 조정을 통해 목표 달성을 지원합니다.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">5</div>
+                        <div class="process-icon mx-auto">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h3 class="h4 text-center mb-3">평가 및 지속 성장</h3>
+                        <p class="text-muted mb-0">목표 달성 정도를 평가하고 성과를 축하합니다. 지속 가능한 성장을 위한 장기적 전략을 수립하고, 필요에 따라 새로운 목표를 설정합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 상세 코칭 과정 -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="fw-bold text-center mb-5">상세 코칭 과정</h2>
+            <div class="process-timeline">
+                <!-- 단계 1: 탐색 및 관계 형성 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-badge">1단계</span>
+                        <h3>탐색 및 관계 형성</h3>
+                        <div class="row align-items-center mb-4">
+                            <div class="col-md-6">
+                                <p>코칭의 첫 단계는 서로를 알아가는 과정입니다. 이 단계에서는 코치와 클라이언트 간의 신뢰 관계를 형성하고, 코칭의 목적과 범위를 명확히 합니다.</p>
+                                <ul class="mb-0">
+                                    <li>코칭 관계와 기대 설정</li>
+                                    <li>클라이언트의 가치와 강점 탐색</li>
+                                    <li>현재 상황과 도전 과제 파악</li>
+                                    <li>코칭 계약 체결</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 mt-4 mt-md-0">
+                                <img src="/api/placeholder/400/250" alt="탐색 및 관계 형성" class="img-fluid rounded">
+                            </div>
+                        </div>
+                        <div class="bg-light p-3 rounded">
+                            <h4 class="h5 mb-2">이 단계에서 사용하는 도구</h4>
+                            <p class="mb-2">• 가치 탐색 워크시트</p>
+                            <p class="mb-2">• 강점 분석 평가지</p>
+                            <p class="mb-0">• 코칭 기대사항 체크리스트</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 단계 2: 목표 설정 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="timeline-badge">2단계</span>
+                        <h3>목표 설정</h3>
+                        <div class="row align-items-center mb-4">
+                            <div class="col-md-6">
+                                <p>명확한 목표 설정은 성공적인 코칭의 핵심입니다. 이 단계에서는 클라이언트가 달성하고자 하는 구체적이고 측정 가능한 목표를 설정합니다.</p>
+                                <ul class="mb-0">
+                                    <li>SMART 목표 설정 (구체적, 측정 가능한, 달성 가능한, 현실적인, 기한이 있는)</li>
+                                    <li>장기 목표와 단기 목표 구분</li>
+                                    <li>목표 우선순위 결정</li>
+                                    <li>목표 달성 지표 설정</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 mt-4 mt-md-0">
+                                <img src="/api/placeholder/400/250" alt="목표 설정" class="img-fluid rounded">
+                            </div>
+                        </div>
+                        <div class="bg-light p-3 rounded">
+                            <h4 class="h5 mb-2">이 단계에서 사용하는 도구</h4>
+                            <p class="mb-2">• SMART 목표 워크시트</p>
+                            <p class="mb-2">• 목표 계층도</p>
+                            <p class="mb-0">• 우선순위 매트릭스</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 단계 3: 실행 계획 수립 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-badge">3단계</span>
+                        <h3>실행 계획 수립</h3>
+                        <div class="row align-items-center mb-4">
+                            <div class="col-md-6">
+                                <p>목표를 설정한 후에는 구체적인 실행 계획을 수립합니다. 이 단계에서는 목표 달성을 위한 단계별 액션 플랜을 작성하고, 예상되는 장애물에 대한 대응 전략을 마련합니다.</p>
+                                <ul class="mb-0">
+                                    <li>세부 액션 플랜 작성</li>
+                                    <li>마일스톤(중간 목표) 설정</li>
+                                    <li>잠재적 장애물 식별 및 대응 전략</li>
+                                    <li>필요한 자원과 지원 체계 파악</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 mt-4 mt-md-0">
+                                <img src="/api/placeholder/400/250" alt="실행 계획 수립" class="img-fluid rounded">
+                            </div>
+                        </div>
+                        <div class="bg-light p-3 rounded">
+                            <h4 class="h5 mb-2">이 단계에서 사용하는 도구</h4>
+                            <p class="mb-2">• 액션 플랜 템플릿</p>
+                            <p class="mb-2">• 장애물 극복 워크시트</p>
+                            <p class="mb-0">• 일정 관리 도구</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 단계 4: 실행 및 피드백 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="timeline-badge">4단계</span>
+                        <h3>실행 및 피드백</h3>
+                        <div class="row align-items-center mb-4">
+                            <div class="col-md-6">
+                                <p>계획을 실행에 옮기고 정기적인 코칭 세션을 통해 진행 상황을 점검합니다. 이 단계는 코칭 과정의 핵심으로, 실질적인 변화가 일어나는 단계입니다.</p>
+                                <ul class="mb-0">
+                                    <li>정기적인 코칭 세션 진행</li>
+                                    <li>실행 과정 모니터링</li>
+                                    <li>도전 과제 해결 및 조정</li>
+                                    <li>성과 축하 및 동기 부여</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 mt-4 mt-md-0">
+                                <img src="/api/placeholder/400/250" alt="실행 및 피드백" class="img-fluid rounded">
+                

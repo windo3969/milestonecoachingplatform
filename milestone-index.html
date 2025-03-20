@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마일스톤 - 코치와 클라이언트를 연결하는 서비스</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4468ff;
+            --primary-dark: #3450d9;
+            --primary-light: #5d8ef3;
+            --dark: #1a1a1a;
+            --gray-dark: #333;
+            --gray: #666;
+            --gray-light: #aaa;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: #333;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-outline-primary:hover,
+        .btn-outline-primary:focus {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .bg-primary {
+            background-color: var(--primary) !important;
+        }
+
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+        }
+
+        .text-primary {
+            color: var(--primary) !important;
+        }
+
+        /* Custom Components */
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        .hero-section {
+            min-height: 700px;
+            padding-top: 80px;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(68, 104, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .process-step {
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin: 0 auto 1.5rem;
+        }
+
+        .process-line {
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background-color: #e0e0e0;
+            z-index: 1;
+        }
+
+        .coach-card {
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .coach-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .coach-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .coach-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .coach-card:hover .coach-image img {
+            transform: scale(1.05);
+        }
+
+        .coach-specialty {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .review-card {
+            position: relative;
+            height: 100%;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--gray-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+        }
+
+        @media (max-width: 991px) {
+            .process-line {
+                display: none;
+            }
+        }
+
+        .coach-mosaic img {
+            transition: all 0.3s ease;
+        }
+
+        .coach-mosaic img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 헤더 -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+            <div class="container">
+                <a class="navbar-brand text-primary" href="#">마일스톤</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features">서비스 소개</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#process">이용 방법</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#coaches">코치 소개</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#reviews">후기</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <button class="btn btn-outline-primary me-2">로그인</button>
+                        <button class="btn btn-primary">회원가입</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 메인 비주얼 -->
+    <section class="bg-gradient-primary text-white hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1 class="display-4 fw-bold mb-4">당신의 성장에 필요한<br>최고의 코치를 만나보세요</h1>
+                    <p class="lead mb-4">전문 코치와 함께 목표를 설정하고, 지속적인 성장을 경험하세요. 마일스톤이 당신의 성공적인 변화를 돕겠습니다.</p>
+                    <a href="#" class="btn btn-light btn-lg px-5 rounded-pill fw-semibold">시작하기</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="/api/placeholder/600/400" alt="코칭 세션 이미지" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 서비스 특징 -->
+    <section class="py-5 py-md-7" id="features">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">마일스톤만의 특별한 점</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">전문적인 코치 매칭 서비스를 통해 당신의 목표 달성을 도와드립니다</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-check2-circle"></i>
+                        </div>
+                        <h3 class="h4 mb-3">검증된 전문 코치</h3>
+                        <p class="text-muted">국내외 인증을 보유한 전문 코치들이 여러분의 성장을 도와드립니다. 엄격한 심사를 통과한 코치만이 마일스톤과 함께합니다.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-person-check"></i>
+                        </div>
+                        <h3 class="h4 mb-3">맞춤형 코칭</h3>
+                        <p class="text-muted">개인의 목표와 성향에 맞는 최적의 코치를 매칭해 드립니다. 체계적인 목표 설정과 실행 계획으로 실질적인 변화를 경험하세요.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <h3 class="h4 mb-3">유연한 코칭 방식</h3>
+                        <p class="text-muted">대면, 비대면 등 원하는 방식으로 코칭을 받을 수 있습니다. 바쁜 일상 속에서도 부담 없이 전문적인 코칭을 경험하세요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 이용 프로세스 -->
+    <section class="py-5 py-md-7 bg-light" id="process">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">서비스 이용 방법</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">간단한 4단계로 전문 코치와 함께하는 성장을 시작하세요</p>
+            </div>
+            <div class="row position-relative">
+                <div class="process-line d-none d-lg-block"></div>
+                <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <div class="process-step text-center">
+                        <div class="step-number">1</div>
+                        <h3 class="h5 mb-3">회원가입</h3>
+                        <p class="text-muted">간단한 정보 입력으로 마일스톤 회원이 됩니다.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <div class="process-step text-center">
+                        <div class="step-number">2</div>
+                        <h3 class="h5 mb-3">상담 신청</h3>
+                        <p class="text-muted">자신에게 맞는 코치를 선택하고 상담을 신청합니다.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+                    <div class="process-step text-center">
+                        <div class="step-number">3</div>
+                        <h3 class="h5 mb-3">코칭 시작</h3>
+                        <p class="text-muted">선택한 방식(대면/비대면)으로 코칭을 진행합니다.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="process-step text-center">
+                        <div class="step-number">4</div>
+                        <h3 class="h5 mb-3">목표 달성</h3>
+                        <p class="text-muted">코치와 함께 설정한 목표를 달성합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 코치 소개 -->
+    <!-- 코치 소개 섹션 -->
+    <section class="py-5 py-md-7" id="coaches">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">검증된 전문 코치</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">다양한 분야의 전문가들이 당신의 성장을 기다리고 있습니다</p>
+            </div>
+
+            <!-- 코치 통계 -->
+            <div class="row mb-5">
+                <div class="col-md-4 text-center mb-4 mb-md-0">
+                    <div class="stat-card bg-white shadow-sm h-100">
+                        <div class="stat-number">250+</div>
+                        <h3 class="h5">등록된 코치</h3>
+                        <p class="text-muted mb-0">각 분야에서 검증된 전문 코치진</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center mb-4 mb-md-0">
+                    <div class="stat-card bg-white shadow-sm h-100">
+                        <div class="stat-number">95%</div>
+                        <h3 class="h5">클라이언트 만족도</h3>
+                        <p class="text-muted mb-0">코칭 만족도 평가 기준</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="stat-card bg-white shadow-sm h-100">
+                        <div class="stat-number">15+</div>
+                        <h3 class="h5">코치 전문 분야</h3>
+                        <p class="text-muted mb-0">다양한 영역의 코칭 가능</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 코치 전문 분야 -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="feature-icon mx-auto">
+                                <i class="bi bi-briefcase"></i>
+                            </div>
+                            <h3 class="h4 text-center mb-3">커리어 코칭</h3>
+                            <p class="text-muted">취업, 이직, 승진, 커리어 전환 등 직업적 성장과 관련된 목표 달성을 위한 코칭을 제공합니다. 자신의 강점을 발견하고 경쟁력
+                                있는 커리어를 구축할 수 있도록 도와드립니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="feature-icon mx-auto">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h3 class="h4 text-center mb-3">리더십 코칭</h3>
+                            <p class="text-muted">리더로서의 역량을 강화하고, 팀 관리와 의사소통 능력을 향상시키는 코칭을 제공합니다. 조직 내에서 영향력 있는 리더로
+                                성장하도록 지원합니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="feature-icon mx-auto">
+                                <i class="bi bi-graph-up"></i>
+                            </div>
+                            <h3 class="h4 text-center mb-3">비즈니스 코칭</h3>
+                            <p class="text-muted">사업 시작, 성장 전략 수립, 조직 관리 등 비즈니스 성공을 위한 전문적인 코칭을 제공합니다. 창업자와 사업가들의 비전 실현을
+                                돕습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center">
+                <a href="coaches.html" class="btn btn-primary btn-lg px-5 rounded-pill fw-semibold">코치 더 알아보기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 코치 매칭 프로세스 -->
+    <section class="py-5 py-md-7 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="fw-bold mb-4">최적의 코치 매칭 시스템</h2>
+                    <p class="lead mb-4">마일스톤의 AI 기반 매칭 시스템이 당신에게 가장 적합한 코치를 연결해 드립니다.</p>
+                    <div class="process-steps position-relative mb-4">
+                        <div class="process-line d-none d-lg-block"></div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="process-step text-center">
+                                    <div class="step-number">1</div>
+                                    <h3 class="h5 mb-3">성향 분석</h3>
+                                    <p class="text-muted">클라이언트의 목표, 성향, 선호도를 분석합니다.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="process-step text-center">
+                                    <div class="step-number">2</div>
+                                    <h3 class="h5 mb-3">코치 추천</h3>
+                                    <p class="text-muted">분석 결과를 바탕으로 최적의 코치를 추천합니다.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4 mb-md-0">
+                                <div class="process-step text-center">
+                                    <div class="step-number">3</div>
+                                    <h3 class="h5 mb-3">무료 체험 세션</h3>
+                                    <p class="text-muted">추천된 코치와 무료 체험 세션을 진행합니다.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="process-step text-center">
+                                    <div class="step-number">4</div>
+                                    <h3 class="h5 mb-3">코칭 시작</h3>
+                                    <p class="text-muted">최종 선택한 코치와 정식 코칭을 시작합니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <a href="#" class="btn btn-primary px-4 rounded-pill">맞춤 코치 찾기</a>
+                        <a href="#" class="btn btn-outline-primary px-4 rounded-pill ms-2">무료 체험 신청</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="/api/placeholder/600/400" alt="코치 매칭 프로세스" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 코치 자격 요건 -->
+    <section class="py-5 py-md-7">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0">
+                    <h2 class="fw-bold mb-4">엄격한 코치 검증 과정</h2>
+                    <p class="lead mb-4">마일스톤은 최고의 코치만을 선별하기 위해 철저한 검증 과정을 거칩니다.</p>
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item border-0 ps-0">
+                            <div class="d-flex">
+                                <div class="feature-icon me-3" style="width: 40px; height: 40px; font-size: 1.2rem;">
+                                    <i class="bi bi-patch-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="h5 mb-2">전문 자격증 보유</h4>
+                                    <p class="text-muted mb-0">국내외 공인된 코칭 자격증을 반드시 보유해야 합니다.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <div class="d-flex">
+                                <div class="feature-icon me-3" style="width: 40px; height: 40px; font-size: 1.2rem;">
+                                    <i class="bi bi-clock-history"></i>
+                                </div>
+                                <div>
+                                    <h4 class="h5 mb-2">최소 3년 이상의 경력</h4>
+                                    <p class="text-muted mb-0">실질적인 코칭 경험과 전문성을 갖춘 코치만 선발합니다.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <div class="d-flex">
+                                <div class="feature-icon me-3" style="width: 40px; height: 40px; font-size: 1.2rem;">
+                                    <i class="bi bi-chat-square-text"></i>
+                                </div>
+                                <div>
+                                    <h4 class="h5 mb-2">심층 인터뷰 및 평가</h4>
+                                    <p class="text-muted mb-0">코칭 철학과 방법론에 대한 철저한 검증을 진행합니다.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <div class="d-flex">
+                                <div class="feature-icon me-3" style="width: 40px; height: 40px; font-size: 1.2rem;">
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <div>
+                                    <h4 class="h5 mb-2">지속적인 품질 평가</h4>
+                                    <p class="text-muted mb-0">클라이언트 피드백을 통한 정기적인 코치 품질 관리를 실시합니다.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-primary px-4 rounded-pill">코치 선발 과정 더 알아보기</a>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <img src="/api/placeholder/600/400" alt="코치 검증 과정" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 코치 후기 -->
+    <section class="py-5 py-md-7 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">코치님들의 이야기</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">마일스톤에서 활동하고 있는 코치님들의 생생한 경험담을 들어보세요</p>
+            </div>
+
+            <div id="coachTestimonials" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="card border-0 shadow-sm p-4">
+                                    <div class="d-flex align-items-center mb-4">
+                                        <img src="/api/placeholder/100/100" alt="코치 이미지" class="rounded-circle me-3"
+                                            width="60" height="60">
+                                        <div>
+                                            <h4 class="h5 mb-1">김성장 코치</h4>
+                                            <p class="text-muted mb-0">리더십 및 커리어 코칭 전문 | 5년 경력</p>
+                                        </div>
+                                    </div>
+                                    <p class="lead mb-0">"마일스톤의 체계적인 시스템 덕분에 제 전문성을 더 효과적으로 클라이언트들에게 전달할 수 있게 되었습니다. 특히
+                                        AI 매칭 시스템은 저와 정말 잘 맞는 클라이언트를 연결해 주어 코칭의 효과성이 크게 향상되었습니다. 코치로서의 성장도 함께 이룰 수 있는
+                                        플랫폼입니다."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="card border-0 shadow-sm p-4">
+                                    <div class="d-flex align-items-center mb-4">
+                                        <img src="/api/placeholder/100/100" alt="코치 이미지" class="rounded-circle me-3"
+                                            width="60" height="60">
+                                        <div>
+                                            <h4 class="h5 mb-1">이목표 코치</h4>
+                                            <p class="text-muted mb-0">비즈니스 및 창업 코칭 전문 | 7년 경력</p>
+                                        </div>
+                                    </div>
+                                    <p class="lead mb-0">"저는 여러 코칭 플랫폼에서 활동해 봤지만, 마일스톤만큼 코치와 클라이언트 모두를 섬세하게 배려하는 곳은
+                                        없었습니다. 코치의 전문성을 존중하면서도 꾸준한 성장을 지원하는 교육 프로그램이 인상적입니다. 다양한 배경을 가진 클라이언트들과 만나며 저
+                                        자신도 계속 성장하고 있습니다."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <button class="btn btn-sm btn-outline-primary rounded-circle mx-2" type="button"
+                        data-bs-target="#coachTestimonials" data-bs-slide="prev">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-primary rounded-circle mx-2" type="button"
+                        data-bs-target="#coachTestimonials" data-bs-slide="next">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 코치 지원 CTA -->
+    <section class="py-5 py-md-7 bg-gradient-primary text-white text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="display-5 fw-bold mb-4">함께 성장할 코치를 찾습니다</h2>
+                    <p class="lead mb-5">전문성과 열정을 가진 코치라면 마일스톤과 함께 더 많은 사람들의 변화를 이끌어보세요.</p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="#" class="btn btn-light btn-lg px-5 rounded-pill fw-semibold">코치 지원하기</a>
+                        <a href="#" class="btn btn-outline-light btn-lg px-5 rounded-pill fw-semibold">코치 혜택 알아보기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 후기 -->
+    <section class="py-5 py-md-7 bg-light" id="reviews">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">마일스톤과 함께한 분들의 이야기</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">실제 코칭 경험을 통해 변화를 경험한 클라이언트들의 후기입니다</p>
+            </div>
+            <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="card border-0 shadow-sm p-4 mx-auto" style="max-width: 800px;">
+                            <div class="d-flex align-items-center mb-4">
+                                <img src="/api/placeholder/100/100" alt="후기 작성자" class="rounded-circle me-3" width="60"
+                                    height="60">
+                                <div>
+                                    <h4 class="h5 mb-1">한소영님</h4>
+                                    <div class="text-warning">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="lead">"마일스톤을 통해 김성장 코치님과 함께 리더십 코칭을 받았습니다. 체계적인 코칭 과정을 통해 업무 방식의 문제점을 찾고 개선할 수
+                                있었습니다. 덕분에 팀 내 갈등이 줄고 생산성이 크게 향상되었습니다."</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card border-0 shadow-sm p-4 mx-auto" style="max-width: 800px;">
+                            <div class="d-flex align-items-center mb-4">
+                                <img src="/api/placeholder/100/100" alt="후기 작성자" class="rounded-circle me-3" width="60"
+                                    height="60">
+                                <div>
+                                    <h4 class="h5 mb-1">김준혁님</h4>
+                                    <div class="text-warning">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="lead">"이목표 코치님과 함께 창업 여정을 시작했습니다. 명확한 목표 설정과 실행 계획 덕분에 초기 사업의 어려움을 극복할 수 있었습니다.
+                                코칭이 아니었다면 지금의 성과는 없었을 것입니다."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <button class="btn btn-sm btn-outline-primary rounded-circle mx-2" type="button"
+                        data-bs-target="#reviewCarousel" data-bs-slide="prev">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-primary rounded-circle mx-2" type="button"
+                        data-bs-target="#reviewCarousel" data-bs-slide="next">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-5 py-md-7 bg-gradient-primary text-white text-center">
+        <div class="container">
+            <div class="mx-auto" style="max-width: 700px;">
+                <h2 class="display-5 fw-bold mb-3">지금 바로 시작하세요</h2>
+                <p class="lead mb-5">당신의 성장을 위한 첫걸음을 마일스톤과 함께 시작하세요.</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="#" class="btn btn-light btn-lg px-4 rounded-pill fw-semibold">클라이언트로 시작하기</a>
+                    <a href="#" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-semibold">코치로 등록하기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="h4 text-white mb-4">마일스톤</h3>
+                    <p class="text-muted mb-4">최고의 코치와 함께하는 성장의 여정<br>
+                        당신의 모든 순간이 의미있는 마일스톤이 되도록</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <h4 class="h5 text-white mb-4">서비스</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">코칭 프로그램</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">코치 찾기</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">요금 안내</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">자주 묻는 질문</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <h4 class="h5 text-white mb-4">마일스톤</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">회사 소개</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">블로그</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">채용 정보</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">개인정보처리방침</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-muted text-center">
+                <p>&copy; 2025 마일스톤. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 스크롤 시 내비게이션 바 변경
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow');
+            } else {
+                navbar.classList.remove('shadow');
+            }
+        });
+
+        // 부드러운 스크롤 이동
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 캐러셀 초기화
+        var reviewCarousel = new bootstrap.Carousel(document.getElementById('reviewCarousel'), {
+            interval: 5000,
+            wrap: true
+        });
+    </script>
+</body>
+
+</html>

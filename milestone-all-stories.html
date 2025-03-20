@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마일스톤 - 모든 성공 스토리</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 마일스톤 커스텀 CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+            <div class="container">
+                <a class="navbar-brand text-primary" href="index.html">마일스톤</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">홈</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="service-detail.html">서비스 소개</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="coaching-process.html">코칭 과정</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="success-stories.html">성공 스토리</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                더 알아보기
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">코치 소개</a></li>
+                                <li><a class="dropdown-item" href="#">요금 안내</a></li>
+                                <li><a class="dropdown-item" href="#">자주 묻는 질문</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <button class="btn btn-outline-primary me-2">로그인</button>
+                        <button class="btn btn-primary">회원가입</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 페이지 헤더 -->
+    <section class="page-header text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-4">20대의 성공 스토리</h1>
+                    <p class="lead mb-0">20대의 고민과 도전을 마일스톤 코칭으로 극복한 생생한 이야기</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 카테고리 필터 -->
+    <section class="py-5">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+                <button class="btn btn-primary active">전체보기</button>
+                <button class="btn btn-outline-primary">취업/진로</button>
+                <button class="btn btn-outline-primary">자기계발</button>
+                <button class="btn btn-outline-primary">인간관계</button>
+                <button class="btn btn-outline-primary">창업/사이드 프로젝트</button>
+                <button class="btn btn-outline-primary">대학생활</button>
+            </div>
+            
+            <!-- 스토리 카드 그리드 -->
+            <div class="row g-4">
+                <!-- 스토리 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="story-card">
+                        <div class="story-img">
+                            <span class="story-category">취업/이직</span>
+                            <img src="/api/placeholder/400/300" alt="김민준님 이미지">
+                        </div>
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-2">전공과 다른 분야 취업, 꿈꾸던 테크 기업에 합격한 이야기</h3>
+                            <p class="text-muted mb-3">김민준님 | 23세 | UX 디자이너</p>
+                            <p class="mb-3">인문학 전공자로 디자인 분야로의 전환이 어려웠지만, 마일스톤 코칭을 통해 포트폴리오 전략을 세우고 체계적인 준비 끝에 글로벌 테크 기업에 입사했습니다.</p>
+                            <a href="success-stories-detail.html?id=1" class="stretched-link text-primary">자세히 보기 <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 스토리 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="story-card">
+                        <div class="story-img">
+                            <span class="story-category">창업/사이드 프로젝트</span>
+                            <img src="/api/placeholder/400/300" alt="이지원님 이미지">
+                        </div>
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-2">대학 재학 중 사이드 프로젝트로 월 300만원 수익 창출한 이야기</h3>
+                            <p class="text-muted mb-3">이지원님 | 22세 | 대학생/마케터</p>
+                            <p class="mb-3">학업과 사이드 프로젝트 병행이 어려웠지만, 마일스톤 코칭으로 시간관리 전략을 세우고 효율적으로 공부하며 디지털 콘텐츠로 의미 있는 수익을 창출했습니다.</p>
+                            <a href="success-stories-detail.html?id=2" class="stretched-link text-primary">자세히 보기 <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 스토리 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="story-card">
+                        <div class="story-img">
+                            <span class="story-category">인간관계</span>
+                            <img src="/api/placeholder/400/300" alt="박소현님 이미지">
+                        </div>
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-2">대인관계 불안을 극복하고 네트워킹 능력을 키운 이야기</h3>
+                            <p class="text-muted mb-3">박소현님 | 21세 | 마케팅 인턴</p>
+                            <p class="mb-3">사회생활 초기 대인관계 불안으로 어려움을 겪었지만, 마일스톤 코칭을 통해 자신감을 키우고 효과적인 소통 방법을 배워 업계 네트워크를 확장했습니다.</p>
+                            <a href="success-stories-detail.html?id=3" class="stretched-link text-primary">자세히 보기 <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 스토리 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="story-card">
+                        <div class="story-img">
+                            <span class="story-category">취업/이직</span>
+                            <img src="/api/placeholder/400/300" alt="최윤서님 이미지">
+                        </div>
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-2">인턴에서 정규직으로, 원하던 기업에 신입으로 취업 성공한 이야기</h3>
+                            <p class="text-muted mb-3">최윤서님 | 24세 | 백엔드 개발자</p>
+                            <p class="mb-3">인턴으로 일하며 취업 준비에 어려움을 겪었습니다. 마일스톤 코칭을 통해 자신의 강점을 발견하고 이력서와 면접 전략을 세워 꿈꾸던 기업의 신입 개발자로 취업에 성공했습니다.</p>
+                            <a href="success-stories-detail.html?id=4" class="stretched-link text-primary">자세히 보기 <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 스토리 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="story-card">
+                        <div class="story-img">
+                            <span class="story-category">창업/사이드 프로젝트</span>
+                            <img src="/api/placeholder/400/300" alt="정도현님 이미지">
+                        </div>
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-2">대학 2학년 때 창업한 앱 서비스로 투자 유치에 성공한 이야기</h3>
+                            <p class="text-muted mb-3">정도현님 | 22세 | 학생 창업가</p>
+                            <p class="mb-3">대학 재학 중 친구들과 시작한 앱 서비스가 성장 정체를 겪던 중, 마일스톤 코칭을 통해 비즈니스 모델을 재정립하고 성공적으로 시드 투자를 유치했습니다.</p>
+                            <a href="success-stories-detail.html?id=5" class="stretched-link text-primary">자세히 보기 <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 스토리 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="story-card">
+                        <div class="story-img">
+                            <span class="story-category">일과 삶의 균형</span>
+                            <img src="/api/placeholder/400/300" alt="한지은님 이미지">
+                        </div>
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-2">학업 스트레스를 극복하고 공부와 취미의 균형을 찾은 이야기</h3>
+                            <p class="text-muted mb-3">한지은님 | 20세 | 대학생/인플루언서</p>
+                            <p class="mb-3">학업 성취에 대한 압박감으로 심각한 스트레스를 경험했지만, 마일스톤 코칭을 통해 효율적인 학습법과 자기 관리를 배우고 공부와 취미 활동의 균형 잡힌 대학 생활을 찾았습니다.</p>
+                            <a href="success-stories-detail.html?id=6" class="stretched-link text-primary">자세히 보기 <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 스토리 7 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="story-card">
+                        <div class="story-img">
+                            <span class="story-category">자기계발</span>
+                            <img src="/api/placeholder/400/300" alt="송민호님 이미지">
+                        </div>
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-2">자기계발 습관을 형성하여 6개월 만에 어학자격증 2개 취득한 이야기</h3>
+                            <p class="text-muted mb-3">송민호님 | 20세 | 대학생</p>
+                            <p class="mb-3">공부 계획은 세우지만 실천이 어려웠던 상황에서, 마일스톤 코칭을 통해 효과적인 학습 습관을 형성하고 목표했던 어학자격증을 취득해 유학 준비를 성공적으로 마쳤습니다.</p>
+                            <a href="success-stories-detail.html?id=7" class="stretched-link text-primary">자세히 보기 <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 스토리 8 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="story-card">
+                        <div class="story-img">
+                            <span class="story-category">인간관계</span>
+                            <img src="/api/placeholder/400/300" alt="이하은님 이미지">
+                        </div>
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-2">팀 프로젝트 갈등 해결 능력을 키워 학생 리더로 성장한 이야기</h3>
+                            <p class="text-muted mb-3">이하은님 | 21세 | 대학생/동아리 회장</p>
+                            <p class="mb-3">학과 과제와 동아리 활동에서 팀원들과의 갈등 상황에서 중재 역할에 어려움을 겪던 중, 마일스톤 코칭으로 소통 능력을 키워 동아리 회장으로 선출되고 리더십을 인정받게 되었습니다.</p>
+                            <a href="success-stories-detail.html?id=8" class="stretched-link text-primary">자세히 보기 <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 스토리 9 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="story-card">
+                        <div class="story-img">
+                            <span class="story-category">자기계발</span>
+                            <img src="/api/placeholder/400/300" alt="김태호님 이미지">
+                        </div>
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-2">전공에 흥미를 잃고 방황하다 자신만의 진로를 찾은 이야기</h3>
+                            <p class="text-muted mb-3">김태호님 | 22세 | 그래픽 디자인 전공 대학생</p>
+                            <p class="mb-3">입학한 전공에 흥미를 잃고 학업에 대한 의욕이 떨어진 상황에서, 마일스톤 코칭을 통해 자신의 진짜 관심사와 강점을 발견하고 진로를 전환하여 새로운 열정을 찾았습니다.</p>
+                            <a href="success-stories-detail.html?id=9" class="stretched-link text-primary">자세히 보기 <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 페이지네이션 -->
+            <nav class="mt-5">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">이전</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">다음</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- 20대 인사이트 섹션 -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="fw-bold mb-4">20대 초반이 마주하는 도전들</h2>
+                    <p class="lead">마일스톤 코칭이 20대 초반의 일반적인 고민과 도전 과제를 어떻게 해결하는지 알아보세요</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="feature-icon mx-auto">
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <h3 class="h4 text-center mb-3">전공과 진로 고민</h3>
+                            <p class="text-muted">많은 20대 초반이 '내가 선택한 전공이 맞는지'와 '어떤 진로를 선택해야 할지'에 대한 혼란을 겪습니다. 마일스톤 코칭은 체계적인 자기 탐색을 통해 진정한 관심사와 강점을 발견하도록 도와드립니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="feature-icon mx-auto">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
+                            <h3 class="h4 text-center mb-3">학업과 활동 균형</h3>
+                            <p class="text-muted">대학 생활에서 학업, 동아리, 인턴십, 취미 활동 사이의 균형을 찾는 것은 중요한 도전입니다. 마일스톤 코칭은 효율적인 시간 관리와 우선순위 설정을 통해 의미 있는 대학 생활을 설계하도록 지원합니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="feature-icon mx-auto">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h3 class="h4 text-center mb-3">인간관계와 소통</h3>
+                            <p class="text-muted">새로운 환경에서의 인간관계 형성과 효과적인 소통은 20대 초반의 중요한 과제입니다. 마일스톤 코칭은 건강한 대인관계를 구축하고 자신의 의견을 효과적으로 표현하는 방법을 알려드립니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 섹션 -->
+    <section class="py-5">
+        <div class="container">
+            <div class="cta-box p-5 text-center">
+                <h2 class="fw-bold mb-4">당신만의 성공 스토리를 시작하세요</h2>
+                <p class="lead mb-4">마일스톤 코칭을 통해 20대 초반에 의미 있는 변화와 성장을 경험하세요</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="#" class="btn btn-light btn-lg px-4 rounded-pill fw-semibold">20대 초반 맞춤 무료 상담 신청</a>
+                    <a href="service-detail.html" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-semibold">서비스 더 알아보기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="h4 text-white mb-4">마일스톤</h3>
+                    <p class="text-muted mb-4">최고의 코치와 함께하는 성장의 여정<br>
+                       당신의 모든 순간이 의미있는 마일스톤이 되도록</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <h4 class="h5 text-white mb-4">서비스</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">코칭 프로그램</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">코치 찾기</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">요금 안내</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">자주 묻는 질문</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <h4 class="h5 text-white mb-4">마일스톤</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">회사 소개</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">블로그</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">채용 정보</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">개인정보처리방침</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-muted text-center">
+                <p>&copy; 2025 마일스톤. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- 커스텀 JS -->
+    <script>
+        // 카테고리 필터 기능
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.btn-outline-primary, .btn-primary');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 활성화된 버튼 스타일 변경
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.classList.remove('btn-primary');
+                        btn.classList.add('btn-outline-primary');
+                    });
+                    
+                    this.classList.remove('btn-outline-primary');
+                    this.classList.add('btn-primary', 'active');
+                    
+                    // 실제 구현 시에는 여기에 필터링 로직 추가
+                    // 예: 카테고리에 맞는 스토리만 표시하기
+                });
+            });
+        });
+    </script>
+</body>
+</html>
