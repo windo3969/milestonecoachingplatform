@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마일스톤 - 문의하기</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4468ff;
+            --primary-dark: #3450d9;
+            --primary-light: #5d8ef3;
+            --dark: #1a1a1a;
+            --gray-dark: #333;
+            --gray: #666;
+            --gray-light: #aaa;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: #333;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .bg-primary {
+            background-color: var(--primary) !important;
+        }
+
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+        }
+
+        .text-primary {
+            color: var(--primary) !important;
+        }
+
+        /* Custom Components */
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            padding: 120px 0 80px;
+            position: relative;
+        }
+
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+        }
+
+        .form-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .form-card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-card .card-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .contact-info-card {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(68, 104, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-right: 20px;
+        }
+
+        .contact-info-text h4 {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .contact-info-text p {
+            margin-bottom: 0;
+            color: var(--gray);
+        }
+
+        .form-select:focus,
+        .form-control:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 0.25rem rgba(68, 104, 255, 0.25);
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: var(--primary);
+        }
+
+        .nav-pills .nav-link {
+            color: var(--gray-dark);
+            font-weight: 500;
+            padding: 15px 20px;
+            border-radius: 5px;
+        }
+
+        .tab-pane {
+            padding: 30px 0;
+        }
+
+        .form-required:after {
+            content: "*";
+            color: #dc3545;
+            margin-left: 3px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--gray-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+        }
+
+        .pricing-card {
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .pricing-card .display-5 {
+            font-size: 2.5rem;
+        }
+
+        @media (max-width: 991px) {
+            .pricing-card {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 헤더 -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+            <div class="container">
+                <a class="navbar-brand text-primary" href="#">마일스톤</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">홈</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">서비스 소개</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">성공 스토리</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">코치 소개</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">요금 안내</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">문의하기</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <button class="btn btn-outline-primary me-2">로그인</button>
+                        <button class="btn btn-primary">회원가입</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 페이지 헤더 -->
+    <section class="page-header text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-4">문의하기</h1>
+                    <p class="lead mb-0">마일스톤과 함께 성장의 여정을 시작하세요</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 요금 안내 섹션 -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="fw-bold mb-4">요금 안내</h2>
+                    <p class="lead">마일스톤이 제공하는 다양한 코칭 프로그램과 합리적인 요금제를 확인하세요<br>
+                        <span class="badge bg-primary mt-2">최종 가격은 무료 상담 후 결정됩니다</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <!-- 베이직 요금제 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-sm h-100 pricing-card">
+                        <div class="card-body p-0">
+                            <div class="p-4 border-bottom bg-white">
+                                <h3 class="h4 text-center mb-3">베이직 플랜</h3>
+                                <div class="d-flex justify-content-center align-items-end mb-4">
+                                    <span class="display-5 fw-bold text-primary">15</span>
+                                    <span class="h5 mb-1">만원 / 세션</span>
+                                </div>
+                                <p class="text-center text-muted mb-0">단기적 목표 달성과 특정 문제 해결을 위한<br>기본 코칭 프로그램</p>
+                            </div>
+                            <div class="p-4">
+                                <ul class="list-unstyled">
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>4주 코칭 (주 1회, 총 4회 세션)</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>세션당 60분 코칭</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>기본 코칭 워크시트 제공</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>이메일 지원 (주 1회)</span>
+                                    </li>
+                                    <li class="d-flex align-items-center text-muted mb-3">
+                                        <i class="bi bi-x-circle-fill me-2"></i>
+                                        <span>중간 점검 세션</span>
+                                    </li>
+                                    <li class="d-flex align-items-center text-muted">
+                                        <i class="bi bi-x-circle-fill me-2"></i>
+                                        <span>맞춤형 성장 계획</span>
+                                    </li>
+                                </ul>
+                                <div class="text-center mt-4">
+                                    <div class="badge bg-light text-dark mb-3">10% 패키지 할인 가능</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 프리미엄 요금제 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 shadow h-100 pricing-card position-relative">
+                        <div class="card-body p-0">
+                            <div class="p-4 border-bottom bg-opacity-10">
+                                <h3 class="h4 text-center mb-3">프리미엄 플랜</h3>
+                                <div class="d-flex justify-content-center align-items-end mb-4">
+                                    <span class="display-5 fw-bold text-primary">12</span>
+                                    <span class="h5 mb-1">만원 / 세션</span>
+                                </div>
+                                <p class="text-center text-muted mb-0">중장기적 목표 달성과 지속적인 성장을 위한<br>종합 코칭 프로그램</p>
+                            </div>
+                            <div class="p-4">
+                                <ul class="list-unstyled">
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>12주 코칭 (주 1회, 총 12회 세션)</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>세션당 60분 코칭</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>고급 코칭 워크시트 제공</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>이메일 지원 (무제한)</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>중간 점검 세션 2회 포함</span>
+                                    </li>
+                                    <li class="d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>맞춤형 성장 계획 제공</span>
+                                    </li>
+                                </ul>
+                                <div class="text-center mt-4">
+                                    <div class="badge bg-primary text-white mb-3">15% 패키지 할인 적용</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 엔터프라이즈 요금제 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-sm h-100 pricing-card">
+                        <div class="card-body p-0">
+                            <div class="p-4 border-bottom bg-white">
+                                <h3 class="h4 text-center mb-3">엔터프라이즈 플랜</h3>
+                                <div class="d-flex justify-content-center align-items-end mb-4">
+                                    <span class="display-5 fw-bold text-primary">맞춤형</span>
+                                </div>
+                                <p class="text-center text-muted mb-0">기업과 팀을 위한 맞춤형<br>그룹 코칭 프로그램</p>
+                            </div>
+                            <div class="p-4">
+                                <ul class="list-unstyled">
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>맞춤형 코칭 기간 설정</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>팀 및 개인 코칭 결합</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>기업 맞춤형 워크시트 및 도구</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>정기 보고서 및 성과 평가</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>팀 워크숍 및 그룹 세션</span>
+                                    </li>
+                                    <li class="d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>기업 전용 담당 코치 배정</span>
+                                    </li>
+                                </ul>
+                                <div class="text-center mt-4">
+                                    <div class="badge bg-light text-dark mb-3">기업 규모에 따른 맞춤 견적</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card border-0 bg-light shadow-sm p-4">
+                        <div class="card-body">
+                            <h4 class="h5 mb-4 text-center">추가 정보</h4>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start mb-3">
+                                        <i class="bi bi-info-circle text-primary me-3 fs-4"></i>
+                                        <div>
+                                            <h5 class="h6 mb-2">코치에 따라 요금이 다를 수 있습니다</h5>
+                                            <p class="text-muted small mb-0">코치의 경력과 전문 분야에 따라 요금이 10-20% 상이할 수 있습니다.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start mb-3">
+                                        <i class="bi bi-credit-card text-primary me-3 fs-4"></i>
+                                        <div>
+                                            <h5 class="h6 mb-2">다양한 결제 방식 지원</h5>
+                                            <p class="text-muted small mb-0">신용카드, 계좌이체, 페이팔 등 다양한 결제 방식을 지원합니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start mb-3">
+                                        <i class="bi bi-calendar-check text-primary me-3 fs-4"></i>
+                                        <div>
+                                            <h5 class="h6 mb-2">유연한 일정 조정</h5>
+                                            <p class="text-muted small mb-0">24시간 전 통보 시 코칭 일정을 변경할 수 있습니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start mb-3">
+                                        <i class="bi bi-shield-check text-primary me-3 fs-4"></i>
+                                        <div>
+                                            <h5 class="h6 mb-2">만족도 보장 정책</h5>
+                                            <p class="text-muted small mb-0">첫 세션 후 만족하지 않으실 경우 100% 환불해 드립니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 메인 컨텐츠 -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="fw-bold mb-4">마일스톤과 함께하는 방법</h2>
+                    <p class="lead">클라이언트로서 코칭을 받거나 코치로서 활동을 시작할 수 있습니다.<br>아래에서 원하는 방법을 선택하고 첫 걸음을 내딛어보세요.</p>
+                </div>
+            </div>
+
+            <!-- 연락처 정보 -->
+            <div class="row mb-5">
+                <div class="col-md-6 mx-auto">
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+                        <div class="contact-info-text">
+                            <h4>이메일</h4>
+                            <p>contact@milestone.kr</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 탭 메뉴 -->
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <ul class="nav nav-pills mb-4 justify-content-center" id="contactTab" role="tablist">
+                        <li class="nav-item mx-2" role="presentation">
+                            <button class="nav-link active" id="client-tab" data-bs-toggle="pill"
+                                data-bs-target="#client-form" type="button" role="tab" aria-controls="client-form"
+                                aria-selected="true">
+                                <i class="bi bi-person me-2"></i>클라이언트 신청
+                            </button>
+                        </li>
+                        <li class="nav-item mx-2" role="presentation">
+                            <button class="nav-link" id="coach-tab" data-bs-toggle="pill" data-bs-target="#coach-form"
+                                type="button" role="tab" aria-controls="coach-form" aria-selected="false">
+                                <i class="bi bi-briefcase me-2"></i>코치 등록 신청
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="contactTabContent">
+                        <!-- 수정된 클라이언트 폼 (플랜 선택 옵션 추가) -->
+                        <div class="tab-pane fade show active" id="client-form" role="tabpanel"
+                            aria-labelledby="client-tab">
+                            <div class="form-card">
+                                <div class="card-header">
+                                    코칭 상담 신청하기
+                                </div>
+                                <div class="card-body p-4">
+                                    <form>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6 mb-3 mb-md-0">
+                                                <label for="clientName" class="form-label form-required">이름</label>
+                                                <input type="text" class="form-control" id="clientName" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="clientAge" class="form-label form-required">나이</label>
+                                                <input type="number" class="form-control" id="clientAge" required>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6 mb-3 mb-md-0">
+                                                <label for="clientEmail" class="form-label form-required">이메일</label>
+                                                <input type="email" class="form-control" id="clientEmail" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="clientPhone" class="form-label form-required">연락처</label>
+                                                <input type="tel" class="form-control" id="clientPhone" required>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6 mb-3 mb-md-0">
+                                                <label for="clientCategory" class="form-label form-required">관심 코칭
+                                                    분야</label>
+                                                <select class="form-select" id="clientCategory" required>
+                                                    <option value="" selected disabled>코칭 분야를 선택하세요</option>
+                                                    <option value="career">커리어 코칭</option>
+                                                    <option value="leadership">리더십 코칭</option>
+                                                    <option value="business">비즈니스 코칭</option>
+                                                    <option value="life">라이프 코칭</option>
+                                                    <option value="relationship">대인관계 코칭</option>
+                                                    <option value="academic">학습/진로 코칭</option>
+                                                    <option value="etc">기타</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="clientPlan" class="form-label form-required">희망 코칭
+                                                    플랜</label>
+                                                <select class="form-select" id="clientPlan" required>
+                                                    <option value="" selected disabled>코칭 플랜을 선택하세요</option>
+                                                    <option value="basic">베이직 플랜 (4주, 주 1회)</option>
+                                                    <option value="premium">프리미엄 플랜 (12주, 주 1회)</option>
+                                                    <option value="enterprise">엔터프라이즈 플랜 (기업/팀 맞춤형)</option>
+                                                    <option value="custom">상담 후 결정</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="clientGoals" class="form-label form-required">코칭을 통해 달성하고 싶은
+                                                목표</label>
+                                            <textarea class="form-control" id="clientGoals" rows="3"
+                                                required></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="clientMessage" class="form-label">추가 메시지</label>
+                                            <textarea class="form-control" id="clientMessage" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label form-required">선호하는 코칭 방식</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="coachingType"
+                                                    id="coachingTypeOnline" value="online" checked>
+                                                <label class="form-check-label" for="coachingTypeOnline">
+                                                    온라인 코칭
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="coachingType"
+                                                    id="coachingTypeOffline" value="offline">
+                                                <label class="form-check-label" for="coachingTypeOffline">
+                                                    오프라인 코칭
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="coachingType"
+                                                    id="coachingTypeBoth" value="both">
+                                                <label class="form-check-label" for="coachingTypeBoth">
+                                                    둘 다 가능
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" id="clientAgreement"
+                                                required>
+                                            <label class="form-check-label form-required" for="clientAgreement">개인정보 수집
+                                                및 이용에 동의합니다.</label>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill">상담
+                                                신청하기</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 코치 등록 신청 폼 -->
+                        <div class="tab-pane fade" id="coach-form" role="tabpanel" aria-labelledby="coach-tab">
+                            <div class="form-card">
+                                <div class="card-header">
+                                    코치 등록 신청하기
+                                </div>
+                                <div class="card-body p-4">
+                                    <form>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6 mb-3 mb-md-0">
+                                                <label for="coachName" class="form-label form-required">이름</label>
+                                                <input type="text" class="form-control" id="coachName" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="coachAge" class="form-label form-required">나이</label>
+                                                <input type="number" class="form-control" id="coachAge" required>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6 mb-3 mb-md-0">
+                                                <label for="coachEmail" class="form-label form-required">이메일</label>
+                                                <input type="email" class="form-control" id="coachEmail" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="coachPhone" class="form-label form-required">연락처</label>
+                                                <input type="tel" class="form-control" id="coachPhone" required>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="coachCategory" class="form-label form-required">전문 코칭 분야 (중복 선택
+                                                가능)</label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="coachCategory" id="categoryCareer" value="career">
+                                                        <label class="form-check-label" for="categoryCareer">
+                                                            커리어 코칭
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="coachCategory" id="categoryLeadership"
+                                                            value="leadership">
+                                                        <label class="form-check-label" for="categoryLeadership">
+                                                            리더십 코칭
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="coachCategory" id="categoryBusiness" value="business">
+                                                        <label class="form-check-label" for="categoryBusiness">
+                                                            비즈니스 코칭
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="coachCategory" id="categoryLife" value="life">
+                                                        <label class="form-check-label" for="categoryLife">
+                                                            라이프 코칭
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="coachCategory" id="categoryRelationship"
+                                                            value="relationship">
+                                                        <label class="form-check-label" for="categoryRelationship">
+                                                            대인관계 코칭
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="coachCategory" id="categoryAcademic" value="academic">
+                                                        <label class="form-check-label" for="categoryAcademic">
+                                                            학습/진로 코칭
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="coachExperience" class="form-label form-required">코칭 경력</label>
+                                            <select class="form-select" id="coachExperience" required>
+                                                <option value="" selected disabled>코칭 경력을 선택하세요</option>
+                                                <option value="1-3">1-3년</option>
+                                                <option value="3-5">3-5년</option>
+                                                <option value="5-10">5-10년</option>
+                                                <option value="10+">10년 이상</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="coachCertificates" class="form-label form-required">보유
+                                                자격증</label>
+                                            <textarea class="form-control" id="coachCertificates" rows="2"
+                                                placeholder="보유하신 코칭 관련 자격증을 입력하세요" required></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="coachIntro" class="form-label form-required">자기소개 및 코칭
+                                                철학</label>
+                                            <textarea class="form-control" id="coachIntro" rows="4" required></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="coachResume" class="form-label form-required">이력서/포트폴리오
+                                                업로드</label>
+                                            <input class="form-control" type="file" id="coachResume" required>
+                                            <div class="form-text">PDF, DOC, DOCX 형식 파일만 업로드 가능합니다. (최대 5MB)</div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label form-required">선호하는 코칭 방식</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="coachPreferType"
+                                                    id="coachTypeOnline" value="online">
+                                                <label class="form-check-label" for="coachTypeOnline">
+                                                    온라인 코칭만 가능
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="coachPreferType"
+                                                    id="coachTypeOffline" value="offline">
+                                                <label class="form-check-label" for="coachTypeOffline">
+                                                    오프라인 코칭만 가능
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="coachPreferType"
+                                                    id="coachTypeBoth" value="both" checked>
+                                                <label class="form-check-label" for="coachTypeBoth">
+                                                    둘 다 가능
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" id="coachAgreement"
+                                                required>
+                                            <label class="form-check-label form-required" for="coachAgreement">개인정보 수집 및
+                                                이용에 동의합니다.</label>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill">코치 등록
+                                                신청하기</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="h4 text-white mb-4">마일스톤</h3>
+                    <p class="text-muted mb-4">최고의 코치와 함께하는 성장의 여정<br>
+                        당신의 모든 순간이 의미있는 마일스톤이 되도록</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <h4 class="h5 text-white mb-4">서비스</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">코칭 프로그램</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">코치 찾기</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">요금 안내</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">자주 묻는 질문</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <h4 class="h5 text-white mb-4">마일스톤</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">회사 소개</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">블로그</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">채용 정보</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">개인정보처리방침</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-muted text-center">
+                <p>&copy; 2025 마일스톤. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- 폼 전환 및 스크립트 -->
+    <script>
+        // 폼 제출 이벤트 처리
+        document.addEventListener('DOMContentLoaded', function () {
+            // 클라이언트 폼 제출
+            document.querySelector('#client-form form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('상담 신청이 완료되었습니다. 담당자가 검토 후 24시간 이내에 연락드리겠습니다.');
+                this.reset();
+            });
+
+            // 코치 폼 제출
+            document.querySelector('#coach-form form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('코치 등록 신청이 완료되었습니다. 담당자가 검토 후 3일 이내에 연락드리겠습니다.');
+                this.reset();
+            });
+        });
+    </script>
+</body>
+
+</html>
