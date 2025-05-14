@@ -13,198 +13,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
         rel="stylesheet">
-    <style>
-        :root {
-            --primary: #4468ff;
-            --primary-dark: #3450d9;
-            --primary-light: #5d8ef3;
-            --dark: #1a1a1a;
-            --gray-dark: #333;
-            --gray: #666;
-            --gray-light: #aaa;
-        }
-
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            color: #333;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .btn-primary:hover,
-        .btn-primary:focus {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
-        }
-
-        .bg-primary {
-            background-color: var(--primary) !important;
-        }
-
-        .bg-gradient-primary {
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-        }
-
-        .text-primary {
-            color: var(--primary) !important;
-        }
-
-        /* Custom Components */
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-        }
-
-        .nav-link {
-            font-weight: 500;
-        }
-
-        .nav-link:hover {
-            color: var(--primary) !important;
-        }
-
-        .page-header {
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            padding: 120px 0 80px;
-            position: relative;
-        }
-
-        .page-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
-        }
-
-        .form-card {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: none;
-        }
-
-        .form-card:hover {
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .form-card .card-header {
-            background-color: var(--primary);
-            color: white;
-            padding: 20px;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .form-check-input:checked {
-            background-color: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .contact-info-card {
-            display: flex;
-            align-items: center;
-            padding: 20px;
-            margin-bottom: 20px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .contact-info-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: rgba(68, 104, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-right: 20px;
-        }
-
-        .contact-info-text h4 {
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .contact-info-text p {
-            margin-bottom: 0;
-            color: var(--gray);
-        }
-
-        .form-select:focus,
-        .form-control:focus {
-            border-color: var(--primary-light);
-            box-shadow: 0 0 0 0.25rem rgba(68, 104, 255, 0.25);
-        }
-
-        .nav-pills .nav-link.active {
-            background-color: var(--primary);
-        }
-
-        .nav-pills .nav-link {
-            color: var(--gray-dark);
-            font-weight: 500;
-            padding: 15px 20px;
-            border-radius: 5px;
-        }
-
-        .tab-pane {
-            padding: 30px 0;
-        }
-
-        .form-required:after {
-            content: "*";
-            color: #dc3545;
-            margin-left: 3px;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--gray-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .social-icon:hover {
-            background-color: var(--primary);
-        }
-
-        .pricing-card {
-            transition: all 0.3s ease;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
-        }
-
-        .pricing-card .display-5 {
-            font-size: 2.5rem;
-        }
-
-        @media (max-width: 991px) {
-            .pricing-card {
-                margin-bottom: 30px;
-            }
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -212,7 +22,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
             <div class="container">
-                <a class="navbar-brand text-primary" href="#">마일스톤</a>
+                <a class="navbar-brand text-primary" href="index.html">마일스톤</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -220,28 +30,18 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">홈</a>
+                            <a class="nav-link" href="milestone-service-detail.html">소개</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">서비스 소개</a>
+                            <a class="nav-link" href="milestone-coaching-process.html">코칭과정</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">성공 스토리</a>
+                            <a class="nav-link" href="milestone-success-stories.html">성공스토리</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">코치 소개</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">요금 안내</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">문의하기</a>
+                            <a class="nav-link" href="contact.html">요금/문의</a>
                         </li>
                     </ul>
-                    <div class="d-flex">
-                        <button class="btn btn-outline-primary me-2">로그인</button>
-                        <button class="btn btn-primary">회원가입</button>
-                    </div>
                 </div>
             </div>
         </nav>
@@ -773,35 +573,24 @@
             <div class="row g-4">
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <h3 class="h4 text-white mb-4">마일스톤</h3>
-                    <p class="text-muted mb-4">최고의 코치와 함께하는 성장의 여정<br>
+                    <p class=" mb-4">최고의 코치와 함께하는 성장의 여정<br>
                         당신의 모든 순간이 의미있는 마일스톤이 되도록</p>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
-                    </div>
+
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <h4 class="h5 text-white mb-4">서비스</h4>
+                    <h4 class="h5 text-white">서비스</h4>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">코칭 프로그램</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">코치 찾기</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">요금 안내</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">자주 묻는 질문</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <h4 class="h5 text-white mb-4">마일스톤</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">회사 소개</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">블로그</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">채용 정보</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">개인정보처리방침</a></li>
+                        <li class="mb-2"><a href="milestone-service-detail.html" class=" text-decoration-none">소개</a>
+                        </li>
+                        <li class="mb-2"><a href="milestone-coaching-process.html" class=" text-decoration-none">코칭
+                                과정</a></li>
+                        <li class="mb-2"><a href="milestone-success-stories.html" class=" text-decoration-none">성공
+                                스토리</a></li>
+                        <li class="mb-2"><a href="contact.html" class=" text-decoration-none">요금/문의</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-top border-secondary mt-5 pt-4 text-muted text-center">
+            <div class="border-top border-secondary mt-5 pt-4  text-center">
                 <p>&copy; 2025 마일스톤. All rights reserved.</p>
             </div>
         </div>
