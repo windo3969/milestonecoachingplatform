@@ -18,6 +18,7 @@
             --primary: #4468ff;
             --primary-dark: #3450d9;
             --primary-light: #5d8ef3;
+            --primary-light-rgb: 93, 142, 219;
             --dark: #1a1a1a;
             --gray-dark: #333;
             --gray: #666;
@@ -67,9 +68,13 @@
         }
 
         .page-header {
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            background: linear-gradient(135deg, rgba(var(--primary-light-rgb), 0.6), rgba(var(--primary-light-rgb), 0.6)), url('/assets/img/main-bg.jpg');
             padding: 120px 0 80px;
             position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
         .page-header::after {
@@ -89,6 +94,7 @@
             transition: all 0.3s ease;
             height: 100%;
             border: none;
+            position: relative;
         }
 
         .story-card:hover {
@@ -529,126 +535,143 @@
     </section>
 
     <!-- 상세 성공 스토리 -->
-<section class="py-5 bg-light" id="story1">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-lg-8 mx-auto">
-                <h2 class="display-5 fw-bold mb-4">전공과 다른 분야 취업, 꿈꾸던 테크 기업에 합격한 이야기</h2>
-                <div class="d-flex align-items-center mb-4">
-                    <img src="/assets/img/100x100/100x100-002.png" alt="김민준님" class="rounded-circle me-3" width="60" height="60">
-                    <div>
-                        <h3 class="h5 mb-1">김민준님 | 23세</h3>
-                        <p class="text-muted mb-0">UX 디자이너 | 글로벌 테크 기업</p>
+    <section class="py-5 bg-light" id="story1">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-4">전공과 다른 분야 취업, 꿈꾸던 테크 기업에 합격한 이야기</h2>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="/assets/img/100x100/100x100-002.png" alt="김민준님" class="rounded-circle me-3" width="60"
+                            height="60">
+                        <div>
+                            <h3 class="h5 mb-1">김민준님 | 23세</h3>
+                            <p class="text-muted mb-0">UX 디자이너 | 글로벌 테크 기업</p>
+                        </div>
                     </div>
-                </div>
-                <div class="coach-badge">
-                    <img src="/assets/img/100x100/100x100-001.png" alt="코치 이미지">
-                    <span>코칭: 박진우 코치 (커리어 전환 코칭 전문)</span>
-                </div>
-                
-                <div class="story-quote">
-                    <p class="mb-0">"철학과 전공자로서 UX 디자인 분야로 취업하는 것은 불가능해 보였어요. 하지만 마일스톤 코칭을 통해 제 배경이 오히려 경쟁력이 될 수 있다는 것을 알게 되었고, 체계적인 준비 끝에 글로벌 테크 기업에 합격했습니다. 불가능해 보이는 목표도 올바른 방향과 전략이 있다면 이룰 수 있다는 것을 배웠습니다."</p>
-                </div>
-                
-                <h3 class="h4 mb-4">코칭을 시작하게 된 계기</h3>
-                <p>철학을 전공했지만 대학 2학년 때 UX 디자인에 큰 매력을 느끼게 되었습니다. 졸업이 다가올수록 전공과 무관한 분야로의 취업에 대한 두려움이 커졌고, 비전공자로서 어떻게 준비해야 할지 막막했습니다. 독학으로 디자인 툴과 기초 지식을 배우기 시작했지만, 체계적인 방향이 없어 효율성이 떨어진다고 느꼈습니다.</p>
-                <p>특히 포트폴리오 준비 과정에서 많은 어려움을 겪었습니다. 채용 공고는 모두 '경력자' 또는 '관련 전공자'를 우대한다고 명시되어 있어 지원 자체가 두려웠습니다. 이런 상황에서 마일스톤 코칭 프로그램을 알게 되었고, 커리어 전환에 성공한 사례들을 보고 박진우 코치님과의 코칭을 시작하게 되었습니다.</p>
-                
-                <div class="before-after">
-                    <div class="before">
-                        <h4 class="h5 mb-3">Before</h4>
+                    <div class="coach-badge">
+                        <img src="/assets/img/100x100/100x100-001.png" alt="코치 이미지">
+                        <span>코칭: 박진우 코치 (커리어 전환 코칭 전문)</span>
+                    </div>
+
+                    <div class="story-quote">
+                        <p class="mb-0">"철학과 전공자로서 UX 디자인 분야로 취업하는 것은 불가능해 보였어요. 하지만 마일스톤 코칭을 통해 제 배경이 오히려 경쟁력이 될 수 있다는
+                            것을 알게 되었고, 체계적인 준비 끝에 글로벌 테크 기업에 합격했습니다. 불가능해 보이는 목표도 올바른 방향과 전략이 있다면 이룰 수 있다는 것을 배웠습니다."
+                        </p>
+                    </div>
+
+                    <h3 class="h4 mb-4">코칭을 시작하게 된 계기</h3>
+                    <p>철학을 전공했지만 대학 2학년 때 UX 디자인에 큰 매력을 느끼게 되었습니다. 졸업이 다가올수록 전공과 무관한 분야로의 취업에 대한 두려움이 커졌고, 비전공자로서 어떻게
+                        준비해야 할지 막막했습니다. 독학으로 디자인 툴과 기초 지식을 배우기 시작했지만, 체계적인 방향이 없어 효율성이 떨어진다고 느꼈습니다.</p>
+                    <p>특히 포트폴리오 준비 과정에서 많은 어려움을 겪었습니다. 채용 공고는 모두 '경력자' 또는 '관련 전공자'를 우대한다고 명시되어 있어 지원 자체가 두려웠습니다. 이런 상황에서
+                        마일스톤 코칭 프로그램을 알게 되었고, 커리어 전환에 성공한 사례들을 보고 박진우 코치님과의 코칭을 시작하게 되었습니다.</p>
+
+                    <div class="before-after">
+                        <div class="before">
+                            <h4 class="h5 mb-3">Before</h4>
+                            <ul class="mb-0">
+                                <li>전공 불일치에 대한 불안감</li>
+                                <li>체계적인 학습 계획 부재</li>
+                                <li>포트폴리오 방향성 혼란</li>
+                                <li>비전공자로서의 자신감 부족</li>
+                                <li>실무 경험 전무</li>
+                            </ul>
+                        </div>
+                        <div class="after">
+                            <h4 class="h5 mb-3">After</h4>
+                            <ul class="mb-0">
+                                <li>차별화된 강점 발견</li>
+                                <li>체계적인 학습 로드맵 완성</li>
+                                <li>철학 배경을 활용한 독특한 포트폴리오</li>
+                                <li>면접 자신감 향상</li>
+                                <li>프로젝트 경험 축적</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="h4 mb-4">코칭 과정과 변화</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content left">
+                                <span class="timeline-date">1주차</span>
+                                <h4 class="h5 mb-3">현재 상황 분석 및 목표 설정</h4>
+                                <p class="mb-0">철학 전공이 UX 디자인에 어떤 강점으로 작용할 수 있는지 분석했습니다. 인간 중심 사고, 논리적 분석력, 문제 해결 능력 등이
+                                    UX 디자인에 중요한 역량임을 인식하고, 6개월 내 글로벌 테크 기업 UX 디자이너 취업이라는 구체적인 목표를 설정했습니다.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content right">
+                                <span class="timeline-date">2-3주차</span>
+                                <h4 class="h5 mb-3">역량 개발 로드맵 수립</h4>
+                                <p class="mb-0">UX 디자이너로 취업하기 위해 필요한 핵심 역량을 파악하고, 우선순위에 따른 학습 계획을 수립했습니다. 디자인 툴뿐만 아니라 UX
+                                    리서치, 사용성 테스트, 디자인 시스템, 기초 코딩(HTML/CSS) 등을 체계적으로 학습하는 일정을 세웠습니다.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content left">
+                                <span class="timeline-date">3-4주차</span>
+                                <h4 class="h5 mb-3">프로젝트 경험 쌓기</h4>
+                                <p class="mb-0">실무와 유사한 경험을 쌓기 위해 세 가지 프로젝트를 진행했습니다. 교내 동아리 웹사이트 개선, 개인 앱 프로토타입 제작, 그리고
+                                    실제 사용자 테스트를 포함한 서비스 리디자인 프로젝트를 통해 실질적인 포트폴리오를 구축했습니다.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content right">
+                                <span class="timeline-date">5-8주차</span>
+                                <h4 class="h5 mb-3">포트폴리오 제작 및 지원 전략</h4>
+                                <p class="mb-0">철학적 사고방식을 UX 디자인에 적용한 독특한 포트폴리오를 완성했습니다. 또한 각 기업별 맞춤형 지원 전략을 세우고, 예상 면접
+                                    질문과 답변을 준비했습니다. 특히 비전공자로서의 강점을 어필하는 방법에 중점을 두었습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="h4 mb-4">코칭을 통해 얻은 가장 큰 성과</h3>
+                    <p>마일스톤 코칭을 통해 얻은 가장 큰 변화는 '약점을 강점으로 전환하는 사고방식'입니다. 처음에는 철학 전공이 취업에 큰 장애물이라고 생각했지만, 코칭을 통해 오히려 이것이
+                        다른 디자이너와 차별화되는 강점이 될 수 있다는 것을 깨달았습니다.</p>
+                    <p>박진우 코치님은 제가 UX 디자인에 철학적 관점을 접목할 수 있도록 도와주셨고, 이는 채용 과정에서 큰 주목을 받았습니다. 면접에서 "당신의 철학 배경이 UX 디자인에 어떤
+                        영향을 미칠 수 있을까요?"라는 질문에 자신있게 답변할 수 있었고, 이것이 합격의 결정적 요인이었다는 피드백을 받았습니다.</p>
+
+                    <div class="highlight-box">
+                        <h4 class="h5 mb-3">주요 성과</h4>
                         <ul class="mb-0">
-                            <li>전공 불일치에 대한 불안감</li>
-                            <li>체계적인 학습 계획 부재</li>
-                            <li>포트폴리오 방향성 혼란</li>
-                            <li>비전공자로서의 자신감 부족</li>
-                            <li>실무 경험 전무</li>
+                            <li>글로벌 테크 기업 UX 디자이너 포지션 합격</li>
+                            <li>처음 목표했던 시기보다 3개월 앞당겨 취업 성공</li>
+                            <li>철학과 UX를 접목한 독특한 포트폴리오 구축</li>
+                            <li>3개의 실질적 프로젝트 경험 확보</li>
+                            <li>디자인 커뮤니티에서 네트워크 형성</li>
                         </ul>
                     </div>
-                    <div class="after">
-                        <h4 class="h5 mb-3">After</h4>
-                        <ul class="mb-0">
-                            <li>차별화된 강점 발견</li>
-                            <li>체계적인 학습 로드맵 완성</li>
-                            <li>철학 배경을 활용한 독특한 포트폴리오</li>
-                            <li>면접 자신감 향상</li>
-                            <li>프로젝트 경험 축적</li>
-                        </ul>
+
+                    <h3 class="h4 mb-4">가장 큰 도전과 극복 방법</h3>
+                    <p>가장 큰 도전은 '포트폴리오 작업 중 자신감 하락'이었습니다. 온라인에서 다른 디자이너들의 화려한 포트폴리오를 보며 좌절감을 느꼈고, "내가 과연 이 분야에서 경쟁력이
+                        있을까?"라는 의심이 들기 시작했습니다.</p>
+                    <p>이 시기에 박진우 코치님은 저만의 독특한 강점에 집중하도록 도와주셨습니다. 특히 '완벽한 포트폴리오'가 아닌 '나다운 포트폴리오'를 만드는 것의 중요성을 강조하셨습니다.
+                        코치님의 조언에 따라 경쟁적인 비교를 중단하고, 매일 작은 진전에 의미를 두는 방식으로 마인드셋을 전환했습니다.</p>
+                    <p>또한 UX 디자인 커뮤니티에 참여하여 피드백을 주고받는 과정을 통해 객관적인 시선으로 제 작업을 바라볼 수 있게 되었고, 이는 포트폴리오의 질을 크게 향상시켰습니다. 무엇보다
+                        코치님과의 정기적인 세션에서 받는 격려와 건설적인 피드백이 어려운 시기를 극복하는 데 결정적인 도움이 되었습니다.</p>
+
+                    <h3 class="h4 mb-4">같은 고민을 가진 분들께 전하는 메시지</h3>
+                    <p>전공과 다른 분야로의 취업을 고민하시는 다른 학생분들께 전하고 싶은 말은, "당신의 배경은 약점이 아니라 경쟁력이 될 수 있다"는 것입니다. 일반적인 경로를 따르지 않았다는
+                        것 자체가 독특한 시각과 다양한 경험을 가져다 주며, 이는 점점 더 창의성과 다양성을 중시하는 현대 직업 세계에서 큰 강점이 됩니다.</p>
+                    <p>또한, 취업 준비 과정에서 자신만의 페이스를 유지하는 것이 중요합니다. 다른 사람들과 비교하며 조급해하기보다, 자신의 강점을 발견하고 이를 효과적으로 표현하는 데 집중하세요.
+                        전공 불일치로 인한 간극은 체계적인 계획과 실질적인 프로젝트 경험으로 충분히 극복할 수 있습니다.</p>
+                    <p>마지막으로, 혼자서 모든 것을 해결하려 하지 마세요. 저에게 마일스톤 코칭이 그랬듯이, 전문적인 조언과 체계적인 지원은 여정을 훨씬 효율적이고 의미 있게 만들어 줍니다.
+                        커리어 전환은 분명 도전적인 과정이지만, 올바른 방향과 지속적인 노력이 있다면 반드시 목표를 이룰 수 있습니다.</p>
+
+                    <div class="cta-box mt-5">
+                        <h3 class="h4 mb-4">당신의 성공 스토리도 시작하세요</h3>
+                        <p class="mb-4">마일스톤 코칭을 통해 전공과 상관없이 꿈꾸던 분야에서 성장할 수 있습니다</p>
+                        <a href="contact.html" class="btn btn-light rounded-pill px-4 py-2 fw-semibold">요금/문의</a>
                     </div>
-                </div>
-                
-                <h3 class="h4 mb-4">코칭 과정과 변화</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content left">
-                            <span class="timeline-date">1주차</span>
-                            <h4 class="h5 mb-3">현재 상황 분석 및 목표 설정</h4>
-                            <p class="mb-0">철학 전공이 UX 디자인에 어떤 강점으로 작용할 수 있는지 분석했습니다. 인간 중심 사고, 논리적 분석력, 문제 해결 능력 등이 UX 디자인에 중요한 역량임을 인식하고, 6개월 내 글로벌 테크 기업 UX 디자이너 취업이라는 구체적인 목표를 설정했습니다.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content right">
-                            <span class="timeline-date">2-3주차</span>
-                            <h4 class="h5 mb-3">역량 개발 로드맵 수립</h4>
-                            <p class="mb-0">UX 디자이너로 취업하기 위해 필요한 핵심 역량을 파악하고, 우선순위에 따른 학습 계획을 수립했습니다. 디자인 툴뿐만 아니라 UX 리서치, 사용성 테스트, 디자인 시스템, 기초 코딩(HTML/CSS) 등을 체계적으로 학습하는 일정을 세웠습니다.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content left">
-                            <span class="timeline-date">3-4주차</span>
-                            <h4 class="h5 mb-3">프로젝트 경험 쌓기</h4>
-                            <p class="mb-0">실무와 유사한 경험을 쌓기 위해 세 가지 프로젝트를 진행했습니다. 교내 동아리 웹사이트 개선, 개인 앱 프로토타입 제작, 그리고 실제 사용자 테스트를 포함한 서비스 리디자인 프로젝트를 통해 실질적인 포트폴리오를 구축했습니다.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content right">
-                            <span class="timeline-date">5-8주차</span>
-                            <h4 class="h5 mb-3">포트폴리오 제작 및 지원 전략</h4>
-                            <p class="mb-0">철학적 사고방식을 UX 디자인에 적용한 독특한 포트폴리오를 완성했습니다. 또한 각 기업별 맞춤형 지원 전략을 세우고, 예상 면접 질문과 답변을 준비했습니다. 특히 비전공자로서의 강점을 어필하는 방법에 중점을 두었습니다.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <h3 class="h4 mb-4">코칭을 통해 얻은 가장 큰 성과</h3>
-                <p>마일스톤 코칭을 통해 얻은 가장 큰 변화는 '약점을 강점으로 전환하는 사고방식'입니다. 처음에는 철학 전공이 취업에 큰 장애물이라고 생각했지만, 코칭을 통해 오히려 이것이 다른 디자이너와 차별화되는 강점이 될 수 있다는 것을 깨달았습니다.</p>
-                <p>박진우 코치님은 제가 UX 디자인에 철학적 관점을 접목할 수 있도록 도와주셨고, 이는 채용 과정에서 큰 주목을 받았습니다. 면접에서 "당신의 철학 배경이 UX 디자인에 어떤 영향을 미칠 수 있을까요?"라는 질문에 자신있게 답변할 수 있었고, 이것이 합격의 결정적 요인이었다는 피드백을 받았습니다.</p>
-                
-                <div class="highlight-box">
-                    <h4 class="h5 mb-3">주요 성과</h4>
-                    <ul class="mb-0">
-                        <li>글로벌 테크 기업 UX 디자이너 포지션 합격</li>
-                        <li>처음 목표했던 시기보다 3개월 앞당겨 취업 성공</li>
-                        <li>철학과 UX를 접목한 독특한 포트폴리오 구축</li>
-                        <li>3개의 실질적 프로젝트 경험 확보</li>
-                        <li>디자인 커뮤니티에서 네트워크 형성</li>
-                    </ul>
-                </div>
-                
-                <h3 class="h4 mb-4">가장 큰 도전과 극복 방법</h3>
-                <p>가장 큰 도전은 '포트폴리오 작업 중 자신감 하락'이었습니다. 온라인에서 다른 디자이너들의 화려한 포트폴리오를 보며 좌절감을 느꼈고, "내가 과연 이 분야에서 경쟁력이 있을까?"라는 의심이 들기 시작했습니다.</p>
-                <p>이 시기에 박진우 코치님은 저만의 독특한 강점에 집중하도록 도와주셨습니다. 특히 '완벽한 포트폴리오'가 아닌 '나다운 포트폴리오'를 만드는 것의 중요성을 강조하셨습니다. 코치님의 조언에 따라 경쟁적인 비교를 중단하고, 매일 작은 진전에 의미를 두는 방식으로 마인드셋을 전환했습니다.</p>
-                <p>또한 UX 디자인 커뮤니티에 참여하여 피드백을 주고받는 과정을 통해 객관적인 시선으로 제 작업을 바라볼 수 있게 되었고, 이는 포트폴리오의 질을 크게 향상시켰습니다. 무엇보다 코치님과의 정기적인 세션에서 받는 격려와 건설적인 피드백이 어려운 시기를 극복하는 데 결정적인 도움이 되었습니다.</p>
-                
-                <h3 class="h4 mb-4">같은 고민을 가진 분들께 전하는 메시지</h3>
-                <p>전공과 다른 분야로의 취업을 고민하시는 다른 학생분들께 전하고 싶은 말은, "당신의 배경은 약점이 아니라 경쟁력이 될 수 있다"는 것입니다. 일반적인 경로를 따르지 않았다는 것 자체가 독특한 시각과 다양한 경험을 가져다 주며, 이는 점점 더 창의성과 다양성을 중시하는 현대 직업 세계에서 큰 강점이 됩니다.</p>
-                <p>또한, 취업 준비 과정에서 자신만의 페이스를 유지하는 것이 중요합니다. 다른 사람들과 비교하며 조급해하기보다, 자신의 강점을 발견하고 이를 효과적으로 표현하는 데 집중하세요. 전공 불일치로 인한 간극은 체계적인 계획과 실질적인 프로젝트 경험으로 충분히 극복할 수 있습니다.</p>
-                <p>마지막으로, 혼자서 모든 것을 해결하려 하지 마세요. 저에게 마일스톤 코칭이 그랬듯이, 전문적인 조언과 체계적인 지원은 여정을 훨씬 효율적이고 의미 있게 만들어 줍니다. 커리어 전환은 분명 도전적인 과정이지만, 올바른 방향과 지속적인 노력이 있다면 반드시 목표를 이룰 수 있습니다.</p>
-                
-                <div class="cta-box mt-5">
-                    <h3 class="h4 mb-4">당신의 성공 스토리도 시작하세요</h3>
-                    <p class="mb-4">마일스톤 코칭을 통해 전공과 상관없이 꿈꾸던 분야에서 성장할 수 있습니다</p>
-                    <a href="contact.html" class="btn btn-light rounded-pill px-4 py-2 fw-semibold">요금/문의</a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- 푸터 -->
+    <!-- 푸터 -->
     <footer class="bg-dark text-white py-5">
         <div class="container">
             <div class="row g-4">
@@ -661,9 +684,12 @@
                 <div class="col-md-6 col-lg-4">
                     <h4 class="h5 text-white">서비스</h4>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="milestone-service-detail.html" class=" text-decoration-none">소개</a></li>
-                        <li class="mb-2"><a href="milestone-coaching-process.html" class=" text-decoration-none">코칭 과정</a></li>
-                        <li class="mb-2"><a href="milestone-success-stories.html" class=" text-decoration-none">성공 스토리</a></li>
+                        <li class="mb-2"><a href="milestone-service-detail.html" class=" text-decoration-none">소개</a>
+                        </li>
+                        <li class="mb-2"><a href="milestone-coaching-process.html" class=" text-decoration-none">코칭
+                                과정</a></li>
+                        <li class="mb-2"><a href="milestone-success-stories.html" class=" text-decoration-none">성공
+                                스토리</a></li>
                         <li class="mb-2"><a href="contact.html" class=" text-decoration-none">요금/문의</a></li>
                     </ul>
                 </div>
@@ -674,5 +700,5 @@
         </div>
     </footer>
 
-<!-- Bootstrap 5 JS Bundle with Popper -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

@@ -18,6 +18,7 @@
             --primary: #4468ff;
             --primary-dark: #3450d9;
             --primary-light: #5d8ef3;
+            --primary-light-rgb: 93, 142, 219;
             --dark: #1a1a1a;
             --gray-dark: #333;
             --gray: #666;
@@ -67,9 +68,13 @@
         }
 
         .page-header {
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            background: linear-gradient(135deg, rgba(var(--primary-light-rgb), 0.1), rgba(var(--primary-light-rgb), 0.1)), url('/assets/img/header-bg.jpg');
             padding: 120px 0 80px;
             position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
         .page-header::after {

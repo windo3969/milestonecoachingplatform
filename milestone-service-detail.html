@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,81 +8,90 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+        rel="stylesheet">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #4468ff;
             --primary-dark: #3450d9;
             --primary-light: #5d8ef3;
+            --primary-light-rgb: 93, 142, 219;
             --dark: #1a1a1a;
             --gray-dark: #333;
             --gray: #666;
             --gray-light: #aaa;
         }
-        
+
         body {
             font-family: 'Noto Sans KR', sans-serif;
             color: #333;
         }
-        
+
         .btn-primary {
             background-color: var(--primary);
             border-color: var(--primary);
         }
-        
-        .btn-primary:hover, .btn-primary:focus {
+
+        .btn-primary:hover,
+        .btn-primary:focus {
             background-color: var(--primary-dark);
             border-color: var(--primary-dark);
         }
-        
+
         .btn-outline-primary {
             color: var(--primary);
             border-color: var(--primary);
         }
-        
-        .btn-outline-primary:hover, .btn-outline-primary:focus {
+
+        .btn-outline-primary:hover,
+        .btn-outline-primary:focus {
             background-color: var(--primary);
             border-color: var(--primary);
         }
-        
+
         .bg-primary {
             background-color: var(--primary) !important;
         }
-        
+
         .bg-gradient-primary {
             background: linear-gradient(135deg, var(--primary-light), var(--primary));
         }
-        
+
         .bg-light-blue {
             background-color: rgba(68, 104, 255, 0.05);
         }
-        
+
         .text-primary {
             color: var(--primary) !important;
         }
-        
+
         /* Custom Components */
         .navbar-brand {
             font-weight: 700;
             font-size: 1.5rem;
         }
-        
+
         .nav-link {
             font-weight: 500;
         }
-        
+
         .nav-link:hover {
             color: var(--primary) !important;
         }
-        
+
         .page-header {
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            background: linear-gradient(135deg, rgba(var(--primary-light-rgb), 0.1), rgba(var(--primary-light-rgb), 0.1)), url('/assets/img/header-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             padding: 120px 0 80px;
             position: relative;
         }
-        
+
         .page-header::after {
             content: '';
             position: absolute;
@@ -89,9 +99,9 @@
             left: 0;
             right: 0;
             height: 100px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
         }
-        
+
         .feature-icon {
             width: 60px;
             height: 60px;
@@ -104,7 +114,7 @@
             color: var(--primary);
             margin-bottom: 1.5rem;
         }
-        
+
         .benefit-card {
             transition: all 0.3s ease;
             height: 100%;
@@ -112,12 +122,12 @@
             overflow: hidden;
             border: none;
         }
-        
+
         .benefit-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .stat-card {
             padding: 30px;
             border-radius: 10px;
@@ -125,64 +135,64 @@
             height: 100%;
             transition: all 0.3s ease;
         }
-        
+
         .stat-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 10px;
         }
-        
+
         .accordion-button:not(.collapsed) {
             background-color: rgba(68, 104, 255, 0.05);
             color: var(--primary);
             box-shadow: none;
         }
-        
+
         .accordion-button:focus {
             box-shadow: none;
             border-color: rgba(68, 104, 255, 0.5);
         }
-        
+
         .coach-card {
             border: none;
             border-radius: 10px;
             overflow: hidden;
             transition: all 0.3s ease;
         }
-        
+
         .coach-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .coach-image {
             height: 250px;
             overflow: hidden;
         }
-        
+
         .coach-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        
+
         .coach-card:hover .coach-image img {
             transform: scale(1.05);
         }
-        
+
         .coach-specialty {
             color: var(--primary);
             font-size: 0.9rem;
             font-weight: 500;
         }
-        
+
         blockquote {
             position: relative;
             padding: 30px;
@@ -190,7 +200,7 @@
             border-left: 5px solid var(--primary);
             font-style: italic;
         }
-        
+
         blockquote::before {
             content: '"';
             font-size: 4rem;
@@ -201,7 +211,7 @@
             top: -10px;
             left: 10px;
         }
-        
+
         .social-icon {
             width: 40px;
             height: 40px;
@@ -213,30 +223,30 @@
             color: white;
             transition: all 0.3s ease;
         }
-        
+
         .social-icon:hover {
             background-color: var(--primary);
         }
-        
+
         .pricing-card {
             border: 1px solid #e9ecef;
             border-radius: 10px;
             transition: all 0.3s ease;
             height: 100%;
         }
-        
+
         .pricing-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             border-color: var(--primary-light);
         }
-        
+
         .pricing-highlight {
             border: 2px solid var(--primary);
             position: relative;
             overflow: hidden;
         }
-        
+
         .pricing-badge {
             position: absolute;
             top: 20px;
@@ -249,39 +259,39 @@
             font-weight: 600;
             z-index: 1;
         }
-        
+
         .pricing-header {
             padding: 30px;
             text-align: center;
             border-bottom: 1px solid #e9ecef;
         }
-        
+
         .pricing-price {
             font-size: 2.5rem;
             font-weight: 700;
             color: var(--primary);
         }
-        
+
         .pricing-body {
             padding: 30px;
         }
-        
+
         .pricing-feature {
             margin-bottom: 15px;
             display: flex;
             align-items: center;
         }
-        
+
         .pricing-feature i {
             color: var(--primary);
             margin-right: 10px;
         }
-        
+
         .timeline {
             position: relative;
             padding-left: 30px;
         }
-        
+
         .timeline::before {
             content: '';
             position: absolute;
@@ -291,16 +301,16 @@
             width: 2px;
             background-color: var(--primary-light);
         }
-        
+
         .timeline-item {
             position: relative;
             padding-bottom: 50px;
         }
-        
+
         .timeline-item:last-child {
             padding-bottom: 0;
         }
-        
+
         .timeline-dot {
             position: absolute;
             left: -39px;
@@ -312,7 +322,7 @@
             border: 5px solid var(--primary);
             z-index: 1;
         }
-        
+
         .timeline-content {
             background-color: white;
             padding: 25px;
@@ -321,6 +331,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- 헤더 -->
     <header>
@@ -369,8 +380,10 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <h2 class="display-5 fw-bold mb-4">마일스톤이<br>당신의 성장을 돕습니다</h2>
-                    <p class="lead text-muted mb-4">마일스톤은 전문 코치와 성장을 원하는 클라이언트를 연결하는 코칭 플랫폼입니다. 개인과 조직의 성장을 위한 최적의 코칭 솔루션을 제공합니다.</p>
-                    <p class="mb-4">우리는 모든 사람이 자신의 잠재력을 최대한 발휘할 수 있다고 믿습니다. 그러나 때로는 혼자서 그 길을 찾기 어려울 수 있습니다. 마일스톤의 전문 코치들은 여러분이 명확한 목표를 설정하고, 장애물을 극복하며, 지속 가능한 성장을 이룰 수 있도록 도와드립니다.</p>
+                    <p class="lead text-muted mb-4">마일스톤은 전문 코치와 성장을 원하는 클라이언트를 연결하는 코칭 플랫폼입니다. 개인과 조직의 성장을 위한 최적의 코칭
+                        솔루션을 제공합니다.</p>
+                    <p class="mb-4">우리는 모든 사람이 자신의 잠재력을 최대한 발휘할 수 있다고 믿습니다. 그러나 때로는 혼자서 그 길을 찾기 어려울 수 있습니다. 마일스톤의 전문
+                        코치들은 여러분이 명확한 목표를 설정하고, 장애물을 극복하며, 지속 가능한 성장을 이룰 수 있도록 도와드립니다.</p>
                     <div class="d-flex mb-4">
                         <div class="me-4">
                             <div class="d-flex align-items-center mb-3">
@@ -414,36 +427,45 @@
                 <div class="col-md-6">
                     <div class="card border-0 shadow-sm h-100 p-4">
                         <h3 class="h4 mb-4">객관적인 시각과 피드백</h3>
-                        <p>우리는 종종 자신의 상황을 객관적으로 바라보기 어렵습니다. 코치는 새로운 관점을 제시하고, 당신이 보지 못했던 패턴과 기회를 발견하도록 도와줍니다. 이러한 객관적인 피드백은 자기 인식을 높이고 더 나은 결정을 내리는 데 필수적입니다.</p>
-                        <p>마일스톤의 코치들은 당신의 이야기를 경청하고, 질문을 통해 스스로 답을 찾아가도록 안내합니다. 이 과정에서 당신은 자신에 대한 새로운 발견과 함께 성장의 기회를 포착하게 됩니다.</p>
+                        <p>우리는 종종 자신의 상황을 객관적으로 바라보기 어렵습니다. 코치는 새로운 관점을 제시하고, 당신이 보지 못했던 패턴과 기회를 발견하도록 도와줍니다. 이러한 객관적인
+                            피드백은 자기 인식을 높이고 더 나은 결정을 내리는 데 필수적입니다.</p>
+                        <p>마일스톤의 코치들은 당신의 이야기를 경청하고, 질문을 통해 스스로 답을 찾아가도록 안내합니다. 이 과정에서 당신은 자신에 대한 새로운 발견과 함께 성장의 기회를
+                            포착하게 됩니다.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card border-0 shadow-sm h-100 p-4">
                         <h3 class="h4 mb-4">명확한 목표 설정과 실행 계획</h3>
-                        <p>꿈은 크지만 어디서부터 시작해야 할지 모르는 경우가 많습니다. 코치는 모호한 목표를 구체적이고 실행 가능한 계획으로 변환하는 데 도움을 줍니다. 목표를 명확히 하고, 단계별 실행 계획을 세워 지속적인 성장을 이끌어냅니다.</p>
-                        <p>체계적인 접근 방식은 불확실성을 줄이고 성취 가능성을 높입니다. 마일스톤의 코칭 프로그램은 현실적인 목표 설정부터 구체적인 액션 플랜까지, 당신의 성공을 위한 로드맵을 함께 만들어갑니다.</p>
+                        <p>꿈은 크지만 어디서부터 시작해야 할지 모르는 경우가 많습니다. 코치는 모호한 목표를 구체적이고 실행 가능한 계획으로 변환하는 데 도움을 줍니다. 목표를 명확히 하고,
+                            단계별 실행 계획을 세워 지속적인 성장을 이끌어냅니다.</p>
+                        <p>체계적인 접근 방식은 불확실성을 줄이고 성취 가능성을 높입니다. 마일스톤의 코칭 프로그램은 현실적인 목표 설정부터 구체적인 액션 플랜까지, 당신의 성공을 위한 로드맵을
+                            함께 만들어갑니다.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card border-0 shadow-sm h-100 p-4">
                         <h3 class="h4 mb-4">지속적인 성장과 책임감</h3>
-                        <p>새로운 습관을 형성하거나 변화를 이끌어내는 것은 쉽지 않습니다. 코치는 당신이 계획한 일을 실행하고 책임감을 가지도록 도와줍니다. 정기적인 세션을 통해 진행 상황을 점검하고, 필요한 조정을 함께 만들어가며 지속적인 성장을 이끌어냅니다.</p>
-                        <p>약속한 것을 누군가에게 보고해야 한다는 책임감은 강력한 동기부여가 됩니다. 마일스톤의 코치들은 당신의 여정에 함께하며, 어려운 순간에도 포기하지 않도록 격려합니다.</p>
+                        <p>새로운 습관을 형성하거나 변화를 이끌어내는 것은 쉽지 않습니다. 코치는 당신이 계획한 일을 실행하고 책임감을 가지도록 도와줍니다. 정기적인 세션을 통해 진행 상황을
+                            점검하고, 필요한 조정을 함께 만들어가며 지속적인 성장을 이끌어냅니다.</p>
+                        <p>약속한 것을 누군가에게 보고해야 한다는 책임감은 강력한 동기부여가 됩니다. 마일스톤의 코치들은 당신의 여정에 함께하며, 어려운 순간에도 포기하지 않도록 격려합니다.
+                        </p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card border-0 shadow-sm h-100 p-4">
                         <h3 class="h4 mb-4">잠재력 발견과 자신감 향상</h3>
-                        <p>많은 사람들이 자신의 진정한 잠재력을 발휘하지 못한 채 살아갑니다. 코치는 당신의 강점을 발견하고, 약점을 보완하는 방법을 함께 찾아가며 자신감을 높이는 데 도움을 줍니다.</p>
-                        <p>자신의 능력에 대한 믿음이 커질수록, 더 큰 도전을 받아들이고 성공할 가능성도 높아집니다. 마일스톤의 코칭은 단순한 조언을 넘어, 당신 안에 있는 가능성을 끌어내는 과정입니다.</p>
+                        <p>많은 사람들이 자신의 진정한 잠재력을 발휘하지 못한 채 살아갑니다. 코치는 당신의 강점을 발견하고, 약점을 보완하는 방법을 함께 찾아가며 자신감을 높이는 데 도움을
+                            줍니다.</p>
+                        <p>자신의 능력에 대한 믿음이 커질수록, 더 큰 도전을 받아들이고 성공할 가능성도 높아집니다. 마일스톤의 코칭은 단순한 조언을 넘어, 당신 안에 있는 가능성을 끌어내는
+                            과정입니다.</p>
                     </div>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-lg-10 mx-auto">
                     <blockquote class="mb-0">
-                        <p class="mb-0">"코칭은 내가 볼 수 없었던 나의 모습을 비춰주는 거울이자, 더 나은 나를 향한 여정의 나침반입니다. 어떤 교육이나 책보다 더 직접적이고 효과적인 변화의 도구임을 경험했습니다."</p>
+                        <p class="mb-0">"코칭은 내가 볼 수 없었던 나의 모습을 비춰주는 거울이자, 더 나은 나를 향한 여정의 나침반입니다. 어떤 교육이나 책보다 더 직접적이고
+                            효과적인 변화의 도구임을 경험했습니다."</p>
                         <footer class="mt-3 text-end text-muted">- 마일스톤 클라이언트 인터뷰 중</footer>
                     </blockquote>
                 </div>
@@ -468,7 +490,8 @@
                                 <i class="bi bi-shield-check"></i>
                             </div>
                             <h3 class="h4 text-center mb-3">검증된 전문 코치</h3>
-                            <p class="text-muted">엄격한 선발 과정을 통과한 전문 코치만이 마일스톤과 함께합니다. 국내외 인증과 풍부한 경험을 갖춘 코치들이 여러분의 성장을 돕습니다.</p>
+                            <p class="text-muted">엄격한 선발 과정을 통과한 전문 코치만이 마일스톤과 함께합니다. 국내외 인증과 풍부한 경험을 갖춘 코치들이 여러분의 성장을
+                                돕습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -573,118 +596,123 @@
         </div>
     </section>
 
-<div class="container">
-                <h2 class="fw-bold mb-4">코칭 여정</h2>
-                <p class="lead mb-5">마일스톤과 함께하는 코칭은 다음과 같은 과정으로 진행됩니다</p>
-                
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3 class="h5 mb-3">1. 무료 상담</h3>
-                            <p>코칭에 대한 궁금증을 해소하고, 목표와 현재 상황을 공유합니다. 이를 바탕으로 클라이언트에게 가장 적합한 코칭 방향을 제안받습니다.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3 class="h5 mb-3">2. 코치 매칭</h3>
-                            <p>클라이언트의 목표와 성향에 가장 적합한 코치가 매칭됩니다. 전문 분야, 경험, 코칭 스타일 등을 고려한 최적의 코치를 만나보세요.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3 class="h5 mb-3">3. 목표 설정</h3>
-                            <p>코치와 함께 명확하고 측정 가능한 목표를 설정합니다. 단기, 중기, 장기 목표를 구분하고 우선순위를 정합니다.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3 class="h5 mb-3">4. 정기 코칭 세션</h3>
-                            <p>설정한 목표를 향해 나아가는 과정에서 정기적인 코칭 세션을 통해 진행 상황을 점검하고 필요한 조정을 합니다.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3 class="h5 mb-3">5. 목표 달성 및 성장</h3>
-                            <p>코칭을 통해 설정한 목표를 달성하고, 지속적인 성장을 위한 자기 주도적 능력을 키웁니다. 성과를 평가하고 새로운 목표를 설정할 수도 있습니다.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-5 mb-5">
-                    <a href="milestone-coaching-process.html" class="btn btn-outline-primary btn-lg px-5 rounded-pill">코칭 과정 더 알아보기</a>
+    <div class="container">
+        <h2 class="fw-bold mb-4">코칭 여정</h2>
+        <p class="lead mb-5">마일스톤과 함께하는 코칭은 다음과 같은 과정으로 진행됩니다</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="h5 mb-3">1. 무료 상담</h3>
+                    <p>코칭에 대한 궁금증을 해소하고, 목표와 현재 상황을 공유합니다. 이를 바탕으로 클라이언트에게 가장 적합한 코칭 방향을 제안받습니다.</p>
                 </div>
             </div>
-        </section>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="h5 mb-3">2. 코치 매칭</h3>
+                    <p>클라이언트의 목표와 성향에 가장 적합한 코치가 매칭됩니다. 전문 분야, 경험, 코칭 스타일 등을 고려한 최적의 코치를 만나보세요.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="h5 mb-3">3. 목표 설정</h3>
+                    <p>코치와 함께 명확하고 측정 가능한 목표를 설정합니다. 단기, 중기, 장기 목표를 구분하고 우선순위를 정합니다.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="h5 mb-3">4. 정기 코칭 세션</h3>
+                    <p>설정한 목표를 향해 나아가는 과정에서 정기적인 코칭 세션을 통해 진행 상황을 점검하고 필요한 조정을 합니다.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="h5 mb-3">5. 목표 달성 및 성장</h3>
+                    <p>코칭을 통해 설정한 목표를 달성하고, 지속적인 성장을 위한 자기 주도적 능력을 키웁니다. 성과를 평가하고 새로운 목표를 설정할 수도 있습니다.</p>
+                </div>
+            </div>
+        </div>
 
-        <!-- CTA 섹션 -->
-        <section class="py-5 py-md-7 bg-gradient-primary text-white text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <h2 class="display-5 fw-bold mb-4">당신의 성장 여정을 시작하세요</h2>
-                        <p class="lead mb-5">전문 코치와 함께 잠재력을 발휘하고 목표를 달성해보세요</p>
-                        <div class="d-flex justify-content-center flex-wrap gap-3">
-                            <a href="contact.html" class="btn btn-light btn-lg px-5 rounded-pill fw-semibold">무료 상담 신청하기</a>
-                        </div>
+        <div class="text-center mt-5 mb-5">
+            <a href="milestone-coaching-process.html" class="btn btn-outline-primary btn-lg px-5 rounded-pill">코칭 과정 더
+                알아보기</a>
+        </div>
+    </div>
+    </section>
+
+    <!-- CTA 섹션 -->
+    <section class="py-5 py-md-7 bg-gradient-primary text-white text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-4">당신의 성장 여정을 시작하세요</h2>
+                    <p class="lead mb-5">전문 코치와 함께 잠재력을 발휘하고 목표를 달성해보세요</p>
+                    <div class="d-flex justify-content-center flex-wrap gap-3">
+                        <a href="contact.html" class="btn btn-light btn-lg px-5 rounded-pill fw-semibold">무료 상담 신청하기</a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 푸터 -->
-        <footer class="bg-dark text-white py-5">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <h3 class="h4 text-white mb-4">마일스톤</h3>
-                        <p class=" mb-4">최고의 코치와 함께하는 성장의 여정<br>
-                            당신의 모든 순간이 의미있는 마일스톤이 되도록</p>
+    <!-- 푸터 -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="h4 text-white mb-4">마일스톤</h3>
+                    <p class=" mb-4">최고의 코치와 함께하는 성장의 여정<br>
+                        당신의 모든 순간이 의미있는 마일스톤이 되도록</p>
 
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <h4 class="h5 text-white">서비스</h4>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><a href="milestone-service-detail.html" class=" text-decoration-none">소개</a></li>
-                            <li class="mb-2"><a href="milestone-coaching-process.html" class=" text-decoration-none">코칭 과정</a></li>
-                            <li class="mb-2"><a href="milestone-success-stories.html" class=" text-decoration-none">성공 스토리</a></li>
-                            <li class="mb-2"><a href="contact.html" class=" text-decoration-none">요금/문의</a></li>
-                        </ul>
-                    </div>
                 </div>
-                <div class="border-top border-secondary mt-5 pt-4  text-center">
-                    <p>&copy; 2025 마일스톤. All rights reserved.</p>
+                <div class="col-md-6 col-lg-4">
+                    <h4 class="h5 text-white">서비스</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="milestone-service-detail.html" class=" text-decoration-none">소개</a>
+                        </li>
+                        <li class="mb-2"><a href="milestone-coaching-process.html" class=" text-decoration-none">코칭
+                                과정</a></li>
+                        <li class="mb-2"><a href="milestone-success-stories.html" class=" text-decoration-none">성공
+                                스토리</a></li>
+                        <li class="mb-2"><a href="contact.html" class=" text-decoration-none">요금/문의</a></li>
+                    </ul>
                 </div>
             </div>
-        </footer>
+            <div class="border-top border-secondary mt-5 pt-4  text-center">
+                <p>&copy; 2025 마일스톤. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-        <!-- Bootstrap 5 JS Bundle with Popper -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-        <script>
-            // 부드러운 스크롤 이동
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 부드러운 스크롤 이동
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
 
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
 
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
 
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             });
-        </script>
-    </body>
+        });
+    </script>
+</body>
+
 </html>
